@@ -15,7 +15,6 @@ fun NavGraphBuilder.ProfileNavGraph(navController: NavHostController) {
         route = Graph.PROFILE + "/{user}",
         startDestination = ProfileScreen.ProfileUpdate.route
     ) {
-
         composable(
             route = ProfileScreen.ProfileUpdate.route,
             arguments = listOf(navArgument("user") {
@@ -26,6 +25,5 @@ fun NavGraphBuilder.ProfileNavGraph(navController: NavHostController) {
                 ProfileUpdateScreen(navController, userParam = it)
             }
         }
-
     }
 }

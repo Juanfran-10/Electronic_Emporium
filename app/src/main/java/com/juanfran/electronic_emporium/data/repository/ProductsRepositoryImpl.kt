@@ -17,15 +17,14 @@ import java.io.File
 class ProductsRepositoryImpl(
     private val remoteDataSource: ProductsRemoteDataSource,
     private val localDataSource: ProductsLocalDataSource
-): ProductsRepository {
-
+) : ProductsRepository {
     override fun findAll(): Flow<Resource<List<Product>>> = flow {
         localDataSource.findAll().collect() {
             it.run {
-                val productsLocalMap = this.map { productEntity -> productEntity.toProduct()  }
+                val productsLocalMap = this.map { productEntity -> productEntity.toProduct() }
                 try {
                     ResponseToRequest.send(remoteDataSource.findAll()).run {
-                        when(this) {
+                        when (this) {
                             is Resource.Success -> {
                                 val productsRemote = this.data
 
@@ -35,6 +34,7 @@ class ProductsRepositoryImpl(
 
                                 emit(Resource.Success(productsRemote))
                             }
+
                             else -> {
                                 emit(Resource.Success(productsLocalMap))
                             }
@@ -50,10 +50,10 @@ class ProductsRepositoryImpl(
     override fun findByCategory(idCategory: String): Flow<Resource<List<Product>>> = flow {
         localDataSource.findByCategory(idCategory).collect() {
             it.run {
-                val productsLocalMap = this.map { productEntity -> productEntity.toProduct()  }
+                val productsLocalMap = this.map { productEntity -> productEntity.toProduct() }
                 try {
                     ResponseToRequest.send(remoteDataSource.findByCategory(idCategory)).run {
-                        when(this) {
+                        when (this) {
                             is Resource.Success -> {
                                 val productsRemote = this.data
 
@@ -63,6 +63,7 @@ class ProductsRepositoryImpl(
 
                                 emit(Resource.Success(productsRemote))
                             }
+
                             else -> {
                                 emit(Resource.Success(productsLocalMap))
                             }
@@ -80,19 +81,18 @@ class ProductsRepositoryImpl(
     }
 
     override suspend fun create(product: Product, files: List<File>): Resource<Product> {
-
         ResponseToRequest.send(remoteDataSource.create(product, files)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.insert(this.data.toProductEntity())
                     Resource.Success(this.data)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }
             }
         }
-
     }
 
     override suspend fun updateWithImage(
@@ -101,7 +101,7 @@ class ProductsRepositoryImpl(
         files: List<File>?
     ): Resource<Product> {
         ResponseToRequest.send(remoteDataSource.updateWithImage(id, product, files)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.update(
                         id = this.data.id ?: "",
@@ -113,6 +113,7 @@ class ProductsRepositoryImpl(
                     )
                     Resource.Success(this.data)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }
@@ -122,7 +123,7 @@ class ProductsRepositoryImpl(
 
     override suspend fun update(id: String, product: Product): Resource<Product> {
         ResponseToRequest.send(remoteDataSource.update(id, product)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.update(
                         id = this.data.id ?: "",
@@ -134,6 +135,7 @@ class ProductsRepositoryImpl(
                     )
                     Resource.Success(this.data)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }
@@ -143,11 +145,12 @@ class ProductsRepositoryImpl(
 
     override suspend fun delete(id: String): Resource<Unit> {
         ResponseToRequest.send(remoteDataSource.delete(id)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.delete(id)
                     Resource.Success(Unit)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }

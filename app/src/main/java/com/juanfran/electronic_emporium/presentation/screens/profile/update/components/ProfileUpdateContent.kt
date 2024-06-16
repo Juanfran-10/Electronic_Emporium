@@ -43,7 +43,10 @@ import com.juanfran.electronic_emporium.presentation.screens.profile.info.Profil
 import com.juanfran.electronic_emporium.presentation.screens.profile.update.ProfileUpdateViewModel
 
 @Composable
-fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewModel = hiltViewModel()) {
+fun ProfileUpdateContent(
+    paddingValues: PaddingValues,
+    vm: ProfileUpdateViewModel = hiltViewModel()
+) {
     val activity = LocalContext.current as? Activity
     val state = vm.state
     val stateDialog = remember { mutableStateOf(false) }
@@ -55,9 +58,10 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
         pickImage = { vm.pickImage() }
     )
 
-    Box(modifier = Modifier
-        .padding(paddingValues)
-        ) {
+    Box(
+        modifier = Modifier
+            .padding(paddingValues)
+    ) {
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.profile_background),
@@ -83,8 +87,7 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
                     contentDescription = "",
                     contentScale = ContentScale.Crop
                 )
-            }
-            else {
+            } else {
                 Image(
                     modifier = Modifier
                         .size(150.dp)
@@ -104,7 +107,7 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
                 ),
                 backgroundColor = Color.White.copy(alpha = 0.7f)
             ) {
-                
+
                 Column(
                     modifier = Modifier.padding(30.dp)
                 ) {
@@ -145,12 +148,8 @@ fun ProfileUpdateContent(paddingValues: PaddingValues, vm: ProfileUpdateViewMode
                         onClick = { vm.onUpdate() }
                     )
                 }
-                
-
-
             }
         }
     }
-
 }
 

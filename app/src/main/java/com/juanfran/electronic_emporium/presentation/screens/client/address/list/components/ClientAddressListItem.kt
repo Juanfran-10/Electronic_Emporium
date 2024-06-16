@@ -17,7 +17,6 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 
 @Composable
 fun ClientAddressListItem(address: Address, vm: ClientAddressListViewModel = hiltViewModel()) {
-
     Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 7.dp)) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -45,5 +44,4 @@ fun ClientAddressListItem(address: Address, vm: ClientAddressListViewModel = hil
             color = Gray100
         )
     }
-
 }

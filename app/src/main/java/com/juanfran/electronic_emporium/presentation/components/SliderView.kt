@@ -22,7 +22,6 @@ import com.juanfran.electronic_emporium.R
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun SliderView(state: PagerState, images: List<String>) {
-
     val imageUrl = remember { mutableStateOf("") }
     HorizontalPager(
         state = state,

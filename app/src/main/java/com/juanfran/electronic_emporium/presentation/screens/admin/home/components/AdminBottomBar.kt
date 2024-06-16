@@ -8,9 +8,8 @@ import com.juanfran.electronic_emporium.presentation.navigation.screen.admin.Adm
 
 @Composable
 fun AdminBottomBar(navController: NavHostController) {
-
     val screens = listOf(
-//        AdminScreen.ProductList,
+        //AdminScreen.ProductList,
         AdminScreen.CategoryList,
         AdminScreen.OrderList,
         AdminScreen.Profile,
@@ -31,5 +30,4 @@ fun AdminBottomBar(navController: NavHostController) {
             }
         }
     }
-
 }

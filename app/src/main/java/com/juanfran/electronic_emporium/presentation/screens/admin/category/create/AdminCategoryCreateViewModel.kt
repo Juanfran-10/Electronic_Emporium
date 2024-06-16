@@ -20,8 +20,7 @@ import javax.inject.Inject
 class AdminCategoryCreateViewModel @Inject constructor(
     private val categoriesUseCase: CategoriesUseCase,
     @ApplicationContext val context: Context
-): ViewModel() {
-
+) : ViewModel() {
     var state by mutableStateOf(AdminCategoryCreateState())
         private set
 
@@ -41,7 +40,7 @@ class AdminCategoryCreateViewModel @Inject constructor(
     }
 
     fun pickImage() = viewModelScope.launch {
-        val result = resultingActivityHandler.getContent("image/*") // URI
+        val result = resultingActivityHandler.getContent("image/*") //URI
         if (result != null) {
             file = ComposeFileProvider.createFileFromUri(context, result)
             state = state.copy(image = result.toString())

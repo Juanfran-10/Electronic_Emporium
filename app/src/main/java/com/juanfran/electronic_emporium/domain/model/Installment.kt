@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class Installment (
+data class Installment(
     @SerializedName("payment_method_id")
     val paymentMethodID: String,
 
@@ -23,7 +23,7 @@ data class Installment (
     val payerCosts: List<PayerCost>,
 
     val agreements: Any? = null
-): Serializable {
+) : Serializable {
     fun toJson(): String = Gson().toJson(this)
 
     companion object {
@@ -31,7 +31,7 @@ data class Installment (
     }
 }
 
-data class Issuer (
+data class Issuer(
     val id: String,
     val name: String,
 
@@ -41,7 +41,7 @@ data class Issuer (
     val thumbnail: String
 )
 
-data class PayerCost (
+data class PayerCost(
     val installments: Int,
 
     @SerializedName("installment_rate")
@@ -85,7 +85,7 @@ enum class InstallmentRateCollector(val value: String) {
         public fun fromValue(value: String): InstallmentRateCollector = when (value) {
             "MERCADOPAGO" -> Mercadopago
             "THIRD_PARTY" -> ThirdParty
-            else          -> throw IllegalArgumentException()
+            else -> throw IllegalArgumentException()
         }
     }
 }
@@ -96,7 +96,7 @@ enum class PaymentMethodOptionID(val value: String) {
     companion object {
         public fun fromValue(value: String): PaymentMethodOptionID = when (value) {
             "1.AQokODllZjQyNjktYjAzMy00OWU1LWJhMWQtNDE0NjQyNTM3MzY4EJaFuevHLg" -> The1AQokODLLZjQyNjktYjAzMy00OWU1LWJhMWQtNDE0NjQyNTM3MzY4EJaFuevHLg
-            else                                                               -> throw IllegalArgumentException()
+            else -> throw IllegalArgumentException()
         }
     }
 }

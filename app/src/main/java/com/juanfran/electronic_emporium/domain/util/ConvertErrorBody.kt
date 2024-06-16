@@ -7,7 +7,6 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.ResponseBody
 
 object ConvertErrorBody {
-
     fun convert(errorBody: ResponseBody?): ErrorResponse? {
         return try {
             errorBody?.source()?.let {
@@ -21,5 +20,4 @@ object ConvertErrorBody {
             null
         }
     }
-
 }

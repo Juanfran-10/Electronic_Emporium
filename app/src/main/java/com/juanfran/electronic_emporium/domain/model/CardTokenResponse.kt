@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class CardTokenResponse (
+data class CardTokenResponse(
     val id: String,
 
     @SerializedName("public_key")
@@ -48,10 +48,11 @@ data class CardTokenResponse (
 
     @SerializedName("security_code_length")
     val securityCodeLength: Long
-): Serializable {
+) : Serializable {
     fun toJson(): String = Gson().toJson(this)
 
     companion object {
-        fun fromJson(data: String): CardTokenResponse = Gson().fromJson(data, CardTokenResponse::class.java)
+        fun fromJson(data: String): CardTokenResponse =
+            Gson().fromJson(data, CardTokenResponse::class.java)
     }
 }

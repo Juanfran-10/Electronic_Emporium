@@ -32,8 +32,10 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.product.creat
 import com.juanfran.electronic_emporium.presentation.screens.admin.product.update.AdminProductUpdateViewModel
 
 @Composable
-fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpdateViewModel = hiltViewModel()) {
-
+fun AdminProductUpdateContent(
+    paddingValues: PaddingValues,
+    vm: AdminProductUpdateViewModel = hiltViewModel()
+) {
     val state = vm.state
     vm.resultingActivityHandler.handle()
     val stateDialog = remember { mutableStateOf(false) }
@@ -67,8 +69,7 @@ fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpda
                     model = state.image1,
                     contentDescription = ""
                 )
-            }
-            else {
+            } else {
                 Image(
                     modifier = Modifier
                         .size(125.dp)
@@ -76,7 +77,7 @@ fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpda
                         .clickable {
                             stateDialog.value = true
                             stateDialogImageNumber.value = 1
-                       },
+                        },
                     painter = painterResource(id = R.drawable.image_add),
                     contentDescription = ""
                 )
@@ -96,8 +97,7 @@ fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpda
                     model = state.image2,
                     contentDescription = ""
                 )
-            }
-            else {
+            } else {
                 Image(
                     modifier = Modifier
                         .size(125.dp)
@@ -105,7 +105,7 @@ fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpda
                         .clickable {
                             stateDialog.value = true
                             stateDialogImageNumber.value = 2
-                       },
+                        },
                     painter = painterResource(id = R.drawable.image_add),
                     contentDescription = ""
                 )
@@ -131,7 +131,7 @@ fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpda
                     modifier = Modifier.fillMaxWidth(),
                     value = state.name,
                     onValueChange = { vm.onNameInput(it) },
-                    label = "Nombre de la producto",
+                    label = "Nombre del producto",
                     icon = Icons.Default.List
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -139,7 +139,7 @@ fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpda
                     modifier = Modifier.fillMaxWidth(),
                     value = state.description,
                     onValueChange = { vm.onDescriptionInput(it) },
-                    label = "Descripcion",
+                    label = "Descripción",
                     icon = Icons.Outlined.Info
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -158,9 +158,6 @@ fun AdminProductUpdateContent(paddingValues: PaddingValues, vm: AdminProductUpda
                     onClick = { vm.updateProduct() }
                 )
             }
-
         }
-
     }
-    
 }

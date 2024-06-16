@@ -15,19 +15,23 @@ import com.juanfran.electronic_emporium.presentation.screens.client.address.list
 
 @Composable
 fun GetAddress(paddingValues: PaddingValues, vm: ClientAddressListViewModel = hiltViewModel()) {
-    when(val response = vm.addressResponse) {
+    when (val response = vm.addressResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-           ClientAddressListContent(paddingValues, response.data)
+            ClientAddressListContent(paddingValues, response.data)
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

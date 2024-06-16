@@ -25,7 +25,11 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.order.detail.
 import com.juanfran.electronic_emporium.presentation.screens.client.order.detail.ClientOrderDetailViewModel
 
 @Composable
-fun AdminOrderDetailContent(paddingValues: PaddingValues, order: Order, vm: AdminOrderDetailViewModel = hiltViewModel()) {
+fun AdminOrderDetailContent(
+    paddingValues: PaddingValues,
+    order: Order,
+    vm: AdminOrderDetailViewModel = hiltViewModel()
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -86,7 +90,7 @@ fun AdminOrderDetailContent(paddingValues: PaddingValues, order: Order, vm: Admi
                         verticalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "Cliente y telefono",
+                            text = "Cliente y teléfono",
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.height(3.dp))
@@ -113,7 +117,7 @@ fun AdminOrderDetailContent(paddingValues: PaddingValues, order: Order, vm: Admi
                         verticalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "Direccion de entrega",
+                            text = "Dirección de entrega",
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.height(3.dp))
@@ -136,21 +140,17 @@ fun AdminOrderDetailContent(paddingValues: PaddingValues, order: Order, vm: Admi
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "TOTAL: $${vm.totalToPay}",
+                        text = "TOTAL: €${vm.totalToPay}",
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp
                     )
                     DefaultButton(
                         modifier = Modifier,
-                        text = "DESPACHAR",
+                        text = "TERMINAR",
                         onClick = { vm.updateStatus(order.id ?: "") }
                     )
                 }
-
             }
         }
     }
-
-
-    
 }

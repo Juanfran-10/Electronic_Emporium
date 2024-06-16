@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ClientCategoryListViewModel @Inject constructor(private val categoriesUseCase: CategoriesUseCase): ViewModel() {
-
+class ClientCategoryListViewModel @Inject constructor(private val categoriesUseCase: CategoriesUseCase) :
+    ViewModel() {
     var categoriesResponse by mutableStateOf<Resource<List<Category>>?>(null)
         private set
 
@@ -26,5 +26,4 @@ class ClientCategoryListViewModel @Inject constructor(private val categoriesUseC
             categoriesResponse = it
         }
     }
-
 }

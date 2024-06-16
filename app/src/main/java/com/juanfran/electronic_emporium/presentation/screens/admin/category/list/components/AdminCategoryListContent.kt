@@ -9,8 +9,11 @@ import androidx.navigation.NavHostController
 import com.juanfran.electronic_emporium.domain.model.Category
 
 @Composable
-fun AdminCategoryListContent(navController: NavHostController, categories: List<Category>, paddingValues: PaddingValues) {
-
+fun AdminCategoryListContent(
+    navController: NavHostController,
+    categories: List<Category>,
+    paddingValues: PaddingValues
+) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -18,7 +21,7 @@ fun AdminCategoryListContent(navController: NavHostController, categories: List<
     ) {
         items(
             items = categories
-        ) {category ->
+        ) { category ->
             AdminCategoryListItem(navController, category)
         }
     }

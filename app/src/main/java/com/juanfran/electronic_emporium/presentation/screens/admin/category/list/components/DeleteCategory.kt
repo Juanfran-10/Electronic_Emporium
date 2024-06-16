@@ -14,19 +14,27 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.category.list
 
 @Composable
 fun DeleteCategory(vm: AdminCategoryListViewModel = hiltViewModel()) {
-    when(val response = vm.deleteCategoryResponse) {
+    when (val response = vm.deleteCategoryResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-            Toast.makeText(LocalContext.current, "La categoria se ha eliminado correctamente", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                LocalContext.current,
+                "La categoría se ha eliminado correctamente",
+                Toast.LENGTH_LONG
+            ).show()
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

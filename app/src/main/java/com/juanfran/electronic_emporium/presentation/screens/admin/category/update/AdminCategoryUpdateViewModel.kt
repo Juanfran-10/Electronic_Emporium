@@ -23,8 +23,7 @@ class AdminCategoryUpdateViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val categoriesUseCase: CategoriesUseCase,
     @ApplicationContext val context: Context
-): ViewModel() {
-
+) : ViewModel() {
     var state by mutableStateOf(AdminCategoryUpdateState())
         private set
 
@@ -46,11 +45,10 @@ class AdminCategoryUpdateViewModel @Inject constructor(
         )
     }
 
-    fun onUpdate()  {
+    fun onUpdate() {
         if (file != null) {
             updateCategoryWithImage()
-        }
-        else {
+        } else {
             updateCategory()
         }
     }
@@ -63,7 +61,8 @@ class AdminCategoryUpdateViewModel @Inject constructor(
 
     fun updateCategoryWithImage() = viewModelScope.launch {
         categoryResponse = Resource.Loading
-        val result = categoriesUseCase.updateCategoryWithImage(category.id ?: "", state.toCategory(), file!!)
+        val result =
+            categoriesUseCase.updateCategoryWithImage(category.id ?: "", state.toCategory(), file!!)
         categoryResponse = result
     }
 

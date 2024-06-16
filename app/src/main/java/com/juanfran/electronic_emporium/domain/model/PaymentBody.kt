@@ -5,8 +5,7 @@ import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import java.io.Serializable
 
-data class PaymentBody (
-
+data class PaymentBody(
     @SerializedName("transaction_amount")
     val transactionAmount: Double,
 
@@ -23,8 +22,7 @@ data class PaymentBody (
     val order: Order,
 
     val payer: Payer
-): Serializable {
-
+) : Serializable {
     fun toJson(): String = Gson().toJson(this)
 
     companion object {
@@ -32,7 +30,7 @@ data class PaymentBody (
     }
 }
 
-data class Payer (
+data class Payer(
     val email: String,
     val identification: Identification
 )

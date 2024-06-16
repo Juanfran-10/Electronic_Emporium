@@ -4,7 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class CardTokenBody (
+data class CardTokenBody(
     @SerializedName("card_number")
     val cardNumber: String,
 
@@ -18,7 +18,7 @@ data class CardTokenBody (
     val securityCode: String,
 
     val cardholder: Cardholder
-): Serializable {
+) : Serializable {
     fun toJson(): String = Gson().toJson(this)
 
     companion object {

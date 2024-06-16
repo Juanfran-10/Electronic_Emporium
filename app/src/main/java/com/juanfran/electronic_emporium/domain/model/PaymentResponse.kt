@@ -5,7 +5,7 @@ import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class PaymentResponse (
+data class PaymentResponse(
     val id: Long,
 
     @SerializedName("date_created")
@@ -180,15 +180,16 @@ data class PaymentResponse (
     val pointOfInteraction: PointOfInteraction,
 
     val tags: Any? = null
-): Serializable {
+) : Serializable {
     fun toJson(): String = Gson().toJson(this)
 
     companion object {
-        fun fromJson(data: String): PaymentResponse = Gson().fromJson(data, PaymentResponse::class.java)
+        fun fromJson(data: String): PaymentResponse =
+            Gson().fromJson(data, PaymentResponse::class.java)
     }
 }
 
-data class AdditionalInfo (
+data class AdditionalInfo(
     @SerializedName("available_balance")
     val availableBalance: Any? = null,
 
@@ -199,7 +200,7 @@ data class AdditionalInfo (
     val authenticationCode: Any? = null
 )
 
-data class Card (
+data class Card(
     val id: Any? = null,
 
     @SerializedName("first_six_digits")
@@ -224,7 +225,7 @@ data class Card (
 )
 
 
-data class FeeDetail (
+data class FeeDetail(
     val type: String,
     val amount: Long,
 
@@ -234,7 +235,7 @@ data class FeeDetail (
 
 typealias Metadata = JsonObject
 
-data class PayerPayment (
+data class PayerPayment(
     @SerializedName("first_name")
     val firstName: Any? = null,
 
@@ -252,7 +253,7 @@ data class PayerPayment (
     val id: String
 )
 
-data class Phone (
+data class Phone(
     @SerializedName("area_code")
     val areaCode: Any? = null,
 
@@ -260,31 +261,31 @@ data class Phone (
     val extension: Any? = null
 )
 
-data class PaymentMethod (
+data class PaymentMethod(
     val id: String,
     val type: String
 )
 
-data class PointOfInteraction (
+data class PointOfInteraction(
     val type: String,
 
     @SerializedName("business_info")
     val businessInfo: BusinessInfo
 )
 
-data class BusinessInfo (
+data class BusinessInfo(
     val unit: String,
 
     @SerializedName("sub_unit")
     val subUnit: String
 )
 
-data class Tax (
+data class Tax(
     val value: Long,
     val type: String
 )
 
-data class TransactionDetails (
+data class TransactionDetails(
     @SerializedName("payment_method_reference_id")
     val paymentMethodReferenceID: Any? = null,
 

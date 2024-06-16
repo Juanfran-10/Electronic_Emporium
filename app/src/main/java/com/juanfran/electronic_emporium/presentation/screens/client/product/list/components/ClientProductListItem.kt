@@ -29,13 +29,22 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 import com.juanfran.electronic_emporium.presentation.ui.theme.Gray200
 
 @Composable
-fun ClientProductListItem(navController: NavHostController, product: Product, vm: ClientProductListViewModel = hiltViewModel()) {
-
+fun ClientProductListItem(
+    navController: NavHostController,
+    product: Product,
+    vm: ClientProductListViewModel = hiltViewModel()
+) {
     Column(
         Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
             .height(90.dp)
-            .clickable { navController.navigate(route = ClientCategoryScreen.ProductDetail.passProduct(product.toJson())) }
+            .clickable {
+                navController.navigate(
+                    route = ClientCategoryScreen.ProductDetail.passProduct(
+                        product.toJson()
+                    )
+                )
+            }
     ) {
         Row() {
 
@@ -75,6 +84,4 @@ fun ClientProductListItem(navController: NavHostController, product: Product, vm
             color = Gray100,
         )
     }
-
-
 }

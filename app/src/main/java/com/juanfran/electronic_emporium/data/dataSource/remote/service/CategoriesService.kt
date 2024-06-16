@@ -14,7 +14,6 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface CategoriesService {
-
     @GET("categories")
     suspend fun getCategories(): Response<List<Category>>
 
@@ -45,5 +44,4 @@ interface CategoriesService {
     suspend fun delete(
         @Path("id") id: String,
     ): Response<Unit>
-
 }

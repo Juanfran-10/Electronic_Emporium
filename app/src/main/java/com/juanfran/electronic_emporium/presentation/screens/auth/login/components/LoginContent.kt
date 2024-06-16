@@ -35,8 +35,11 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Blue700
 
 
 @Composable
-fun LoginContent(navController: NavHostController, paddingValues: PaddingValues, vm: LoginViewModel = hiltViewModel()) {
-
+fun LoginContent(
+    navController: NavHostController,
+    paddingValues: PaddingValues,
+    vm: LoginViewModel = hiltViewModel()
+) {
     val state = vm.state
     val context = LocalContext.current
 
@@ -47,9 +50,10 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
         }
     }
 
-    Box(modifier = Modifier
-        .padding(paddingValues = paddingValues)
-        .fillMaxSize()
+    Box(
+        modifier = Modifier
+            .padding(paddingValues = paddingValues)
+            .fillMaxSize()
 
     ) {
         Image(
@@ -110,7 +114,7 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
                         modifier = Modifier.fillMaxWidth(),
                         value = state.email,
                         onValueChange = { text ->
-                           vm.onEmailInput(text)
+                            vm.onEmailInput(text)
                         },
                         label = "Correo electrónico",
                         icon = Icons.Default.Email,
@@ -143,7 +147,6 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
                         horizontalArrangement = Arrangement.Center
                     ) {
                         Text(
-//                           modifier = Modifier.padding(end = 6.dp),
                             text = "¿No tienes cuenta?"
                         )
                         Spacer(modifier = Modifier.width(6.dp))
@@ -155,7 +158,6 @@ fun LoginContent(navController: NavHostController, paddingValues: PaddingValues,
                     }
                 }
             }
-
         }
     }
 }

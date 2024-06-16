@@ -22,11 +22,16 @@ import com.juanfran.electronic_emporium.presentation.navigation.screen.client.Cl
 
 @Composable
 fun ClientCategoryListItem(navController: NavHostController, category: Category) {
-
     Card(
         modifier = Modifier
             .padding(bottom = 15.dp)
-            .clickable { navController.navigate(route = ClientCategoryScreen.ProductList.passCategory(category.toJson())) },
+            .clickable {
+                navController.navigate(
+                    route = ClientCategoryScreen.ProductList.passCategory(
+                        category.toJson()
+                    )
+                )
+            },
         elevation = 4.dp,
         shape = RoundedCornerShape(20.dp)
     ) {
@@ -39,7 +44,6 @@ fun ClientCategoryListItem(navController: NavHostController, category: Category)
                     .height(170.dp),
                 model = category.image,
                 contentDescription = "",
-//                contentScale = ContentScale.Crop
             )
             Text(
                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
@@ -53,9 +57,6 @@ fun ClientCategoryListItem(navController: NavHostController, category: Category)
                 fontSize = 14.sp,
                 color = Color.Gray
             )
-
         }
-
     }
-
 }

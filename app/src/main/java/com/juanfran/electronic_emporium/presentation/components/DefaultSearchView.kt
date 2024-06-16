@@ -66,7 +66,6 @@ fun DefaultSearchView(
                     tint = Color.Black
                 )
             }
-
         }
     )
 }

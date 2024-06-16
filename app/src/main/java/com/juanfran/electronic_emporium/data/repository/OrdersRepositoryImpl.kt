@@ -8,8 +8,8 @@ import com.juanfran.electronic_emporium.domain.util.ResponseToRequest
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class OrdersRepositoryImpl(private val remoteDataSource: OrdersRemoteDataSource): OrdersRepository {
-
+class OrdersRepositoryImpl(private val remoteDataSource: OrdersRemoteDataSource) :
+    OrdersRepository {
     override fun findAll(): Flow<Resource<List<Order>>> = flow {
         emit(ResponseToRequest.send(remoteDataSource.findAll()))
     }

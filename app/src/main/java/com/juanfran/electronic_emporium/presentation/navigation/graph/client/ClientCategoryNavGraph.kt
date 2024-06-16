@@ -23,7 +23,6 @@ fun NavGraphBuilder.ClientCategoryNavGraph(navController: NavHostController) {
         route = Graph.CLIENT_CATEGORY,
         startDestination = ClientCategoryScreen.ProductList.route
     ) {
-
         composable(
             route = ClientCategoryScreen.ProductList.route,
             arguments = listOf(navArgument("category") {
@@ -45,7 +44,5 @@ fun NavGraphBuilder.ClientCategoryNavGraph(navController: NavHostController) {
                 ClientProductDetailScreen(navController, it)
             }
         }
-
-
     }
 }

@@ -18,8 +18,7 @@ import javax.inject.Inject
 class ClientOrderListViewModel @Inject constructor(
     private val ordersUseCase: OrdersUseCase,
     private val authUseCase: AuthUseCase
-): ViewModel() {
-
+) : ViewModel() {
     var user by mutableStateOf<User?>(null)
         private set
     var ordersResponse by mutableStateOf<Resource<List<Order>>?>(null)
@@ -36,5 +35,4 @@ class ClientOrderListViewModel @Inject constructor(
             ordersResponse = it
         }
     }
-
 }

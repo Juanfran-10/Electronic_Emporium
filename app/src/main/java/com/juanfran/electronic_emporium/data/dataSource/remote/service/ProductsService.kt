@@ -14,7 +14,6 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ProductsService {
-
     @GET("products/category/{id_category}")
     suspend fun findByCategory(
         @Path("id_category") idCategory: String

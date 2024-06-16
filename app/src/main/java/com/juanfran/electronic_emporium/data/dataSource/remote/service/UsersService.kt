@@ -11,9 +11,7 @@ import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface UsersService {
-
-    //http://192.168.1.15:3000/users
-
+    //http://ipOrdenador:3000/users
     @PUT("users/{id}")
     suspend fun update(
         @Path("id") id: String,
@@ -29,5 +27,4 @@ interface UsersService {
         @Part("lastname") lastname: RequestBody,
         @Part("phone") phone: RequestBody,
     ): Response<User>
-
 }

@@ -15,20 +15,32 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.product.list.
 import com.juanfran.electronic_emporium.presentation.screens.client.product.list.ClientProductListViewModel
 
 @Composable
-fun GetProducts(navController: NavHostController, paddingValues: PaddingValues, vm: ClientProductListViewModel = hiltViewModel()) {
-    when(val response = vm.productsResponse) {
+fun GetProducts(
+    navController: NavHostController,
+    paddingValues: PaddingValues,
+    vm: ClientProductListViewModel = hiltViewModel()
+) {
+    when (val response = vm.productsResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-           ClientProductListContent(navController = navController, paddingValues = paddingValues , products = response.data)
+            ClientProductListContent(
+                navController = navController,
+                paddingValues = paddingValues,
+                products = response.data
+            )
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

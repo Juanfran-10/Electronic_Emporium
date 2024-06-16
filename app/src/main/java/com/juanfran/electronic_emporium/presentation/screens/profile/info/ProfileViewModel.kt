@@ -11,8 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
-
+class ProfileViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
     var user by mutableStateOf<User?>(null)
         private set
 
@@ -29,5 +28,4 @@ class ProfileViewModel @Inject constructor(private val authUseCase: AuthUseCase)
     fun logout() = viewModelScope.launch {
         authUseCase.logout()
     }
-
 }

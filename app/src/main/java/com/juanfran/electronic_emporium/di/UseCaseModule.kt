@@ -24,7 +24,6 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object UseCaseModule {
-
     @Provides
     fun provideAuthUseCase(authRepository: AuthRepository) = AuthUseCase(
         login = LoginUseCase(authRepository),
@@ -62,13 +61,14 @@ object UseCaseModule {
     )
 
     @Provides
-    fun provideShoppingBagUseCase(shoppingBagRepository: ShoppingBagRepository) = ShoppingBagUseCase(
-        add = AddUseCase(shoppingBagRepository),
-        delete = DeleteUseCase(shoppingBagRepository),
-        findAll = FindAllShoppingBagUseCase(shoppingBagRepository),
-        findById = FindByIdShoppingBagUseCase(shoppingBagRepository),
-        getTotal = GetTotalUseCase(shoppingBagRepository)
-    )
+    fun provideShoppingBagUseCase(shoppingBagRepository: ShoppingBagRepository) =
+        ShoppingBagUseCase(
+            add = AddUseCase(shoppingBagRepository),
+            delete = DeleteUseCase(shoppingBagRepository),
+            findAll = FindAllShoppingBagUseCase(shoppingBagRepository),
+            findById = FindByIdShoppingBagUseCase(shoppingBagRepository),
+            getTotal = GetTotalUseCase(shoppingBagRepository)
+        )
 
     @Provides
     fun provideAddressUseCase(addressRepository: AddressRepository) = AddressUseCase(
@@ -77,12 +77,13 @@ object UseCaseModule {
     )
 
     @Provides
-    fun provideMercadoPagoUseCase(mercadoPagoRepository: MercadoPagoRepository) = MercadoPagoUseCase(
-        getIdentificationType = GetIdentificationTypeUseCase(mercadoPagoRepository),
-        getInstallments = GetInstallmentsUseCase(mercadoPagoRepository),
-        createCardToken = CreateCardTokenUseCase(mercadoPagoRepository),
-        createPayment = CreatePaymentUseCase(mercadoPagoRepository),
-    )
+    fun provideMercadoPagoUseCase(mercadoPagoRepository: MercadoPagoRepository) =
+        MercadoPagoUseCase(
+            getIdentificationType = GetIdentificationTypeUseCase(mercadoPagoRepository),
+            getInstallments = GetInstallmentsUseCase(mercadoPagoRepository),
+            createCardToken = CreateCardTokenUseCase(mercadoPagoRepository),
+            createPayment = CreatePaymentUseCase(mercadoPagoRepository),
+        )
 
     @Provides
     fun provideOrdersUseCase(ordersRepository: OrdersRepository) = OrdersUseCase(

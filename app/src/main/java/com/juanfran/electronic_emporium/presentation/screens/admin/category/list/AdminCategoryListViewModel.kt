@@ -15,14 +15,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCase: CategoriesUseCase): ViewModel() {
-
+class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCase: CategoriesUseCase) :
+    ViewModel() {
     var categoriesResponse by mutableStateOf<Resource<List<Category>>?>(null)
         private set
 
     var deleteCategoryResponse by mutableStateOf<Resource<Unit>?>(null)
         private set
-
 
     init {
         getCategories()
@@ -41,5 +40,4 @@ class AdminCategoryListViewModel @Inject constructor(private val categoriesUseCa
         val result = categoriesUseCase.deleteCategory(id)
         deleteCategoryResponse = result
     }
-
 }

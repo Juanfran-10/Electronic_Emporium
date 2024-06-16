@@ -7,9 +7,7 @@ import com.juanfran.electronic_emporium.presentation.screens.client.product.deta
 
 @Composable
 fun ClientProductDetailScreen(navController: NavHostController, productParam: String) {
-
     Scaffold() { paddingValues ->
         ClientProductDetailContent(paddingValues)
     }
-
 }

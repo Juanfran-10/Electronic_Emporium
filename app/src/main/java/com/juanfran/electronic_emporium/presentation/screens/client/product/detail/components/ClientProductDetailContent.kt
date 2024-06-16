@@ -29,10 +29,15 @@ import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun ClientProductDetailContent(paddingValues: PaddingValues, vm: ClientProductDetailViewModel = hiltViewModel()) {
+fun ClientProductDetailContent(
+    paddingValues: PaddingValues,
+    vm: ClientProductDetailViewModel = hiltViewModel()
+) {
     val state = rememberPagerState()
     Box(
-        modifier = Modifier.padding(paddingValues).fillMaxSize()
+        modifier = Modifier
+            .padding(paddingValues)
+            .fillMaxSize()
     ) {
         Column(
         ) {
@@ -64,7 +69,7 @@ fun ClientProductDetailContent(paddingValues: PaddingValues, vm: ClientProductDe
                 )
                 Text(
                     modifier = Modifier.padding(bottom = 7.dp),
-                    text = "Descripcion",
+                    text = "Descripción",
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )
@@ -92,7 +97,7 @@ fun ClientProductDetailContent(paddingValues: PaddingValues, vm: ClientProductDe
                 )
                 Text(
                     modifier = Modifier.padding(bottom = 7.dp),
-                    text = "Tu orden",
+                    text = "Tu pedido",
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp
                 )
@@ -111,14 +116,16 @@ fun ClientProductDetailContent(paddingValues: PaddingValues, vm: ClientProductDe
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Card(
-                        modifier = Modifier.width(100.dp).height(35.dp),
+                        modifier = Modifier
+                            .width(100.dp)
+                            .height(35.dp),
                         shape = RoundedCornerShape(10.dp),
                         backgroundColor = Gray700
                     ) {
                         Row(
                             horizontalArrangement = Arrangement.SpaceEvenly,
                             verticalAlignment = Alignment.CenterVertically
-                        )   {
+                        ) {
                             Text(
                                 modifier = Modifier.clickable { vm.remove() },
                                 text = "-",
@@ -145,7 +152,6 @@ fun ClientProductDetailContent(paddingValues: PaddingValues, vm: ClientProductDe
                         onClick = { vm.saveItem() }
                     )
                 }
-
             }
         }
     }

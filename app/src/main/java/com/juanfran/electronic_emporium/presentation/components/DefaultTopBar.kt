@@ -17,7 +17,7 @@ import com.juanfran.electronic_emporium.presentation.navigation.screen.client.Sh
 fun DefaultTopBar(
     title: String,
     upAvailable: Boolean = false,
-    navController: NavHostController? = null, // null,
+    navController: NavHostController? = null,
     enableActions: Boolean = false
 ) {
     TopAppBar(

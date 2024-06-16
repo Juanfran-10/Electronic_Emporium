@@ -15,19 +15,27 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.product.list.
 
 @Composable
 fun DeleteProduct(vm: AdminProductListViewModel = hiltViewModel()) {
-    when(val response = vm.productDeleteResponse) {
+    when (val response = vm.productDeleteResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-            Toast.makeText(LocalContext.current, "El producto se elimino correctamente", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                LocalContext.current,
+                "El producto se elimino correctamente",
+                Toast.LENGTH_LONG
+            ).show()
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

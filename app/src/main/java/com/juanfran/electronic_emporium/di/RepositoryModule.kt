@@ -12,7 +12,6 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
-
     @Provides
     fun provideAuthRepository(
         authRemoteDataSource: AuthRemoteDataSource,
@@ -28,13 +27,15 @@ object RepositoryModule {
     fun provideCategoriesRepository(
         categoriesRemoteDataSource: CategoriesRemoteDataSource,
         categoriesLocalDataSource: CategoriesLocalDataSource
-    ): CategoriesRepository = CategoriesRepositoryImpl(categoriesRemoteDataSource, categoriesLocalDataSource)
+    ): CategoriesRepository =
+        CategoriesRepositoryImpl(categoriesRemoteDataSource, categoriesLocalDataSource)
 
     @Provides
     fun provideProductsRepository(
         productsRemoteDataSource: ProductsRemoteDataSource,
         productsLocalDataSource: ProductsLocalDataSource
-    ): ProductsRepository = ProductsRepositoryImpl(productsRemoteDataSource, productsLocalDataSource)
+    ): ProductsRepository =
+        ProductsRepositoryImpl(productsRemoteDataSource, productsLocalDataSource)
 
     @Provides
     fun provideShoppingBagRepository(
@@ -56,5 +57,4 @@ object RepositoryModule {
     fun provideOrdersRepository(
         ordersRemoteDataSource: OrdersRemoteDataSource
     ): OrdersRepository = OrdersRepositoryImpl(ordersRemoteDataSource)
-
 }

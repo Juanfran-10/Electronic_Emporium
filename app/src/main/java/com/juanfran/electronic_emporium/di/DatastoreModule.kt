@@ -17,7 +17,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatastoreModule {
-
     @Provides
     @Singleton
     fun providePreferenceDatastore(@ApplicationContext context: Context): DataStore<Preferences> =
@@ -30,6 +29,4 @@ object DatastoreModule {
     @Provides
     @Singleton
     fun provideAuthDatastore(dataStore: DataStore<Preferences>) = AuthDatastore(dataStore)
-
-
 }

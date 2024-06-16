@@ -8,10 +8,8 @@ import com.juanfran.electronic_emporium.presentation.screens.profile.info.compon
 
 @Composable
 fun ProfileScreen(navController: NavHostController) {
-
     Scaffold(
-    ) {paddingValues ->
+    ) { paddingValues ->
         ProfileContent(paddingValues = paddingValues, navController = navController)
     }
-
 }

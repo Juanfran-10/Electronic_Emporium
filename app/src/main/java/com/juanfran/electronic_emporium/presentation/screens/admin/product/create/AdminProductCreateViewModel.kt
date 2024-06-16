@@ -25,11 +25,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AdminProductCreateViewModel @Inject constructor(
-   @ApplicationContext val context: Context,
-   private val savedStateHandle: SavedStateHandle,
-   private val productsUseCase: ProductsUseCase
-): ViewModel() {
-
+    @ApplicationContext val context: Context,
+    private val savedStateHandle: SavedStateHandle,
+    private val productsUseCase: ProductsUseCase
+) : ViewModel() {
     var state by mutableStateOf(AdminProductCreateState())
         private set
 
@@ -59,13 +58,12 @@ class AdminProductCreateViewModel @Inject constructor(
     }
 
     fun pickImage(imageNumber: Int) = viewModelScope.launch {
-        val result = resultingActivityHandler.getContent("image/*") // URI
+        val result = resultingActivityHandler.getContent("image/*") //URI
         if (result != null) {
             if (imageNumber == 1) {
                 file1 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image1 = result.toString())
-            }
-            else if (imageNumber == 2) {
+            } else if (imageNumber == 2) {
                 file2 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image2 = result.toString())
             }
@@ -78,8 +76,7 @@ class AdminProductCreateViewModel @Inject constructor(
             if (imageNumber == 1) {
                 state = state.copy(image1 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file1 = File(state.image1)
-            }
-            else if (imageNumber == 2) {
+            } else if (imageNumber == 2) {
                 state = state.copy(image2 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file2 = File(state.image2)
             }
@@ -108,5 +105,4 @@ class AdminProductCreateViewModel @Inject constructor(
     fun onPriceInput(input: String) {
         state = state.copy(price = input.toDouble())
     }
-
 }

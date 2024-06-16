@@ -15,14 +15,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
-
+class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
     var state by mutableStateOf(LoginState())
         private set
 
     var errorMessage by mutableStateOf("")
 
-    // LOGIN RESPONSE
     var loginResponse by mutableStateOf<Resource<AuthResponse>?>(null)
         private set
 
@@ -46,9 +44,9 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
     fun login() = viewModelScope.launch {
 
         if (isValidForm()) {
-            loginResponse = Resource.Loading // ESPERANDO
-            val result = authUseCase.login(state.email, state.password) // RETORNA UNA RESPUESTA
-            loginResponse = result // EXITOSA / ERROR
+            loginResponse = Resource.Loading //ESPERANDO
+            val result = authUseCase.login(state.email, state.password) //RETORNA UNA RESPUESTA
+            loginResponse = result //EXITOSA / ERROR
         }
     }
 
@@ -61,13 +59,12 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
     }
 
 
-    fun isValidForm(): Boolean  {
+    fun isValidForm(): Boolean {
 
         if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
-            errorMessage = "El email no es valido"
+            errorMessage = "El email no es válido"
             return false
-        }
-        else if (state.password.length < 6) {
+        } else if (state.password.length < 6) {
             errorMessage = "La contraseña debe tener al menos 6 caracteres"
             return false
         }

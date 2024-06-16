@@ -14,7 +14,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AdminOrderListViewModel @Inject constructor(private val ordersUseCase: OrdersUseCase): ViewModel() {
-
     var ordersResponse by mutableStateOf<Resource<List<Order>>?>(null)
 //    var ordersByClientResponse by mutableStateOf<Resource<List<Order>>?>(null)
 //    var ordersStatusResponse by mutableStateOf<Resource<Order>?>(null)

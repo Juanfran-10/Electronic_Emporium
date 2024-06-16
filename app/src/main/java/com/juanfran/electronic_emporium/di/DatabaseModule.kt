@@ -16,11 +16,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
-
     @Provides
     @Singleton
     fun provideDatabase(app: Application): EcommerceDB =
-        Room.databaseBuilder(app, EcommerceDB::class.java, "ecommerce_db").fallbackToDestructiveMigration().build()
+        Room.databaseBuilder(app, EcommerceDB::class.java, "electronic_emporium")
+            .fallbackToDestructiveMigration().build()
 
     @Provides
     @Singleton
@@ -37,5 +37,4 @@ object DatabaseModule {
     @Provides
     @Singleton
     fun provideAddressDao(db: EcommerceDB): AddressDao = db.addressDao()
-
 }

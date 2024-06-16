@@ -19,8 +19,7 @@ import javax.inject.Inject
 class ClientAddressListViewModel @Inject constructor(
     private val addressUseCase: AddressUseCase,
     private val authUseCase: AuthUseCase
-): ViewModel() {
-
+) : ViewModel() {
     var addressResponse by mutableStateOf<Resource<List<Address>>?>(null)
         private set
     var selectedAddress by mutableStateOf("")
@@ -29,7 +28,6 @@ class ClientAddressListViewModel @Inject constructor(
 
     fun getSessionData() = viewModelScope.launch {
         user = authUseCase.getSessionData().first().user
-        Log.d("ClientAddressListViewModel", "User: ${user}")
 
         getAddress(user?.id ?: "")
         if (user?.address != null) {
@@ -40,7 +38,6 @@ class ClientAddressListViewModel @Inject constructor(
     fun getAddress(idUser: String) = viewModelScope.launch {
         addressResponse = Resource.Loading
         addressUseCase.findByUserAddress(idUser).collect() {
-            Log.d("ClientAddressListViewModel", "Data: ${it}")
             addressResponse = it
         }
     }
@@ -50,5 +47,4 @@ class ClientAddressListViewModel @Inject constructor(
         user?.address = address
         if (user != null) authUseCase.updateSession(user!!)
     }
-
 }

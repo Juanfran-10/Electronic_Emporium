@@ -10,19 +10,27 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.order.detail.
 
 @Composable
 fun UpdateStatusOrder(vm: AdminOrderDetailViewModel = hiltViewModel()) {
-    when(val response = vm.ordersStatusResponse) {
+    when (val response = vm.ordersStatusResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-            Toast.makeText(LocalContext.current, "La orden se ha actualizado correctamente", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                LocalContext.current,
+                "El pedido se ha actualizado correctamente",
+                Toast.LENGTH_LONG
+            ).show()
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

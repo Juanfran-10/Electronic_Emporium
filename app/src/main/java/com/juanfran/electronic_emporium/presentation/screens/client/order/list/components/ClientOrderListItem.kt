@@ -19,15 +19,19 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 
 @Composable
 fun ClientOrderListItem(order: Order, navController: NavHostController) {
-
     Column(
         modifier = Modifier
             .padding(top = 20.dp, start = 20.dp, end = 20.dp)
-            .clickable { navController.navigate(route = ClientOrderScreen.OrderDetail.passOrder(order.toJson())) }
-//            .clickable { navController.navigate(route = AdminOrderScreen.OrderDetail.route) }
+            .clickable {
+                navController.navigate(
+                    route = ClientOrderScreen.OrderDetail.passOrder(
+                        order.toJson()
+                    )
+                )
+            }
     ) {
         Text(
-            text = "Orden #${order.id}",
+            text = "Pedido #${order.id}",
             fontWeight = FontWeight.Bold,
             fontSize = 17.sp
         )
@@ -39,23 +43,24 @@ fun ClientOrderListItem(order: Order, navController: NavHostController) {
         )
         Text(
             modifier = Modifier.padding(top = 5.dp),
-            text = "Cliente ${ order.client?.name } ${ order.client?.lastname }",
+            text = "Cliente ${order.client?.name} ${order.client?.lastname}",
             fontSize = 15.sp
         )
         Text(
             modifier = Modifier.padding(top = 5.dp),
-            text = "Entregar en ${ order.address?.address }",
+            text = "Entregar en ${order.address?.address}",
             fontSize = 15.sp
         )
         Text(
             modifier = Modifier.padding(top = 5.dp, bottom = 5.dp),
-            text = "Estado: ${ order.status }",
+            text = "Estado: ${order.status}",
             fontSize = 15.sp
         )
         Divider(
-            modifier = Modifier.fillMaxWidth().padding(vertical = 5.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 5.dp),
             color = Gray100
         )
     }
-
 }

@@ -16,8 +16,8 @@ import com.juanfran.electronic_emporium.data.dataSource.local.entity.ShoppingBag
     version = 1,
     exportSchema = false
 )
-abstract class EcommerceDB: RoomDatabase() {
-    abstract fun categoriesDao(): CategoriesDao // DATA ACCESS OBJECT
+abstract class EcommerceDB : RoomDatabase() {
+    abstract fun categoriesDao(): CategoriesDao //DATA ACCESS OBJECT
     abstract fun productsDao(): ProductsDao
     abstract fun shoppingBagDao(): ShoppingBagDao
     abstract fun addressDao(): AddressDao

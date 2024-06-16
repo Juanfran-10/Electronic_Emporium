@@ -14,20 +14,23 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object LocalDataModule {
+    @Provides
+    fun provideAuthLocalDataSource(authDatastore: AuthDatastore): AuthLocalDataSource =
+        AuthLocalDataSourceImpl(authDatastore)
 
     @Provides
-    fun provideAuthLocalDataSource(authDatastore: AuthDatastore): AuthLocalDataSource = AuthLocalDataSourceImpl(authDatastore)
+    fun provideCategoriesLocalDataSource(categoriesDao: CategoriesDao): CategoriesLocalDataSource =
+        CategoriesLocalDataSourceImpl(categoriesDao)
 
     @Provides
-    fun provideCategoriesLocalDataSource(categoriesDao: CategoriesDao): CategoriesLocalDataSource = CategoriesLocalDataSourceImpl(categoriesDao)
+    fun provideProductsLocalDataSource(productsDao: ProductsDao): ProductsLocalDataSource =
+        ProductsLocalDataSourceImpl(productsDao)
 
     @Provides
-    fun provideProductsLocalDataSource(productsDao: ProductsDao): ProductsLocalDataSource = ProductsLocalDataSourceImpl(productsDao)
+    fun provideShoppingBagLocalDataSource(shoppingBagDao: ShoppingBagDao): ShoppingBagLocalDataSource =
+        ShoppingBagLocalDataSourceImpl(shoppingBagDao)
 
     @Provides
-    fun provideShoppingBagLocalDataSource(shoppingBagDao: ShoppingBagDao): ShoppingBagLocalDataSource = ShoppingBagLocalDataSourceImpl(shoppingBagDao)
-
-    @Provides
-    fun provideAddressLocalDataSource(addressDao: AddressDao): AddressLocalDataSource = AddressLocalDataSourceImpl(addressDao)
-
+    fun provideAddressLocalDataSource(addressDao: AddressDao): AddressLocalDataSource =
+        AddressLocalDataSourceImpl(addressDao)
 }

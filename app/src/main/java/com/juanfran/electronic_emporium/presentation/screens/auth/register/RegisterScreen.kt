@@ -12,7 +12,6 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.EcommerceAppMVVMTh
 
 @Composable
 fun RegisterScreen(navController: NavHostController) {
-
     Scaffold(
         topBar = {
             DefaultTopBar(
@@ -22,8 +21,7 @@ fun RegisterScreen(navController: NavHostController) {
             )
 
         },
-
-    ) { paddingValues ->
+        ) { paddingValues ->
         RegisterContent(paddingValues = paddingValues)
     }
     Register(navController)

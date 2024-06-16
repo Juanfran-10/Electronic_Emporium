@@ -8,8 +8,7 @@ data class Address(
     @SerializedName("address") val address: String,
     @SerializedName("neighborhood") val neighborhood: String,
     @SerializedName("id_user") val idUser: String,
-): java.io.Serializable {
-
+) : java.io.Serializable {
     fun toJson(): String = Gson().toJson(this)
 
     companion object {

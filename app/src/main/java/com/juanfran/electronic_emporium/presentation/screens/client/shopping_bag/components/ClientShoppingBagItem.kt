@@ -25,8 +25,10 @@ import com.juanfran.electronic_emporium.presentation.screens.client.shopping_bag
 import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 
 @Composable
-fun ClientShoppingBagItem(shoppingBagProduct: ShoppingBagProduct, vm: ClientShoppingBagViewModel = hiltViewModel()) {
-
+fun ClientShoppingBagItem(
+    shoppingBagProduct: ShoppingBagProduct,
+    vm: ClientShoppingBagViewModel = hiltViewModel()
+) {
     Row(
         modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
         horizontalArrangement = Arrangement.Center,
@@ -60,7 +62,7 @@ fun ClientShoppingBagItem(shoppingBagProduct: ShoppingBagProduct, vm: ClientShop
                 Row(
                     horizontalArrangement = Arrangement.SpaceEvenly,
                     verticalAlignment = Alignment.CenterVertically
-                )   {
+                ) {
                     Text(
                         modifier = Modifier.clickable { vm.subtractItem(shoppingBagProduct) },
                         text = "-",
@@ -73,7 +75,7 @@ fun ClientShoppingBagItem(shoppingBagProduct: ShoppingBagProduct, vm: ClientShop
                         color = Color.White
                     )
                     Text(
-                        modifier = Modifier.clickable { vm.addItem(shoppingBagProduct)  },
+                        modifier = Modifier.clickable { vm.addItem(shoppingBagProduct) },
                         text = "+",
                         fontSize = 19.sp,
                         color = Color.White,
@@ -96,8 +98,5 @@ fun ClientShoppingBagItem(shoppingBagProduct: ShoppingBagProduct, vm: ClientShop
                 contentDescription = ""
             )
         }
-
-
     }
-
 }

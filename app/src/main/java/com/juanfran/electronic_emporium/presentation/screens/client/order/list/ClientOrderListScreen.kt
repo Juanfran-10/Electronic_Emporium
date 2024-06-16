@@ -7,12 +7,13 @@ import androidx.navigation.NavHostController
 import com.juanfran.electronic_emporium.presentation.screens.client.order.list.components.GetOrders
 
 @Composable
-fun ClientOrderListScreen(navController: NavHostController, vm: ClientOrderListViewModel = hiltViewModel()) {
-
+fun ClientOrderListScreen(
+    navController: NavHostController,
+    vm: ClientOrderListViewModel = hiltViewModel()
+) {
     vm.getSessionData()
 
-    Scaffold() { paddingValues ->  
+    Scaffold() { paddingValues ->
         GetOrders(navController = navController, paddingValues = paddingValues)
     }
-    
 }

@@ -1,6 +1,5 @@
 package com.juanfran.electronic_emporium.presentation.screens.client.product.listByCategory.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,23 +9,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
-import com.juanfran.electronic_emporium.R
 import com.juanfran.electronic_emporium.domain.model.Product
-import com.juanfran.electronic_emporium.presentation.navigation.screen.admin.AdminCategoryScreen
 import com.juanfran.electronic_emporium.presentation.navigation.screen.client.ClientProductScreen
-import com.juanfran.electronic_emporium.presentation.screens.admin.product.list.AdminProductListViewModel
 import com.juanfran.electronic_emporium.presentation.screens.client.product.listByCategory.ClientProductByCategoryListViewModel
 import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 
 @Composable
-fun ClientProductByCategoryListItem(navController: NavHostController, product: Product, vm: ClientProductByCategoryListViewModel = hiltViewModel()) {
-
+fun ClientProductByCategoryListItem(
+    navController: NavHostController,
+    product: Product,
+    vm: ClientProductByCategoryListViewModel = hiltViewModel()
+) {
     Column(
         Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
@@ -65,7 +63,6 @@ fun ClientProductByCategoryListItem(navController: NavHostController, product: P
                 model = product.image1,
                 contentDescription = ""
             )
-
         }
         Spacer(modifier = Modifier.height(10.dp))
         Divider(
@@ -73,6 +70,4 @@ fun ClientProductByCategoryListItem(navController: NavHostController, product: P
             color = Gray100,
         )
     }
-
-
 }

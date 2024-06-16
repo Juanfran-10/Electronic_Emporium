@@ -17,7 +17,6 @@ class ClientProductDetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val shoppingBagUseCase: ShoppingBagUseCase
 ) : ViewModel() {
-
     var data = savedStateHandle.get<String>("product")
     var product = Product.fromJson(data!!)
     var productImages = listOf<String>(product.image1 ?: "", product.image2 ?: "")
@@ -32,12 +31,12 @@ class ClientProductDetailViewModel @Inject constructor(
         getShoppingBagProduct()
     }
 
-    fun add()  {
+    fun add() {
         quantity = quantity + 1
         price = product.price * quantity
     }
 
-    fun remove()  {
+    fun remove() {
         if (quantity > 0) {
             quantity = quantity - 1
             price = product.price * quantity
@@ -53,7 +52,6 @@ class ClientProductDetailViewModel @Inject constructor(
     }
 
     fun saveItem() = viewModelScope.launch {
-        Log.d("ClientProductDetailViewModel", "Id: ${product.id}")
         if (quantity > 0) {
             val shoppingBagProduct = ShoppingBagProduct(
                 id = product.id ?: "",
@@ -66,5 +64,4 @@ class ClientProductDetailViewModel @Inject constructor(
             shoppingBagUseCase.add(shoppingBagProduct)
         }
     }
-
 }

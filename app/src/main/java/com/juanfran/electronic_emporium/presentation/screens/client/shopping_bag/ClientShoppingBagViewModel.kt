@@ -14,15 +14,10 @@ import javax.inject.Inject
 class ClientShoppingBagViewModel @Inject constructor(
     private val shoppingBagUseCase: ShoppingBagUseCase
 ) : ViewModel() {
-
     var shoppingBag = mutableStateListOf<ShoppingBagProduct>()
         private set
     var total by mutableStateOf(0.0)
         private set
-
-//    init {
-//        getShoppingBag()
-//    }
 
     fun getTotal() {
         total = 0.0
@@ -41,7 +36,6 @@ class ClientShoppingBagViewModel @Inject constructor(
 
     fun addItem(shoppingBagProduct: ShoppingBagProduct) = viewModelScope.launch {
         shoppingBagProduct.quantity = shoppingBagProduct.quantity + 1
-        Log.d("ClientShoppingBagViewModel", "dATA: ${shoppingBagProduct}")
         shoppingBagUseCase.add(shoppingBagProduct)
         getTotal()
     }
@@ -58,5 +52,4 @@ class ClientShoppingBagViewModel @Inject constructor(
         shoppingBagUseCase.delete(id)
         getTotal()
     }
-
 }

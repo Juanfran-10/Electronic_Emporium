@@ -11,16 +11,17 @@ import androidx.compose.ui.Modifier
 import com.juanfran.electronic_emporium.domain.model.ShoppingBagProduct
 
 @Composable
-fun ClientShoppingBagContent(paddingValues: PaddingValues, shoppingBag: MutableList<ShoppingBagProduct>) {
-
+fun ClientShoppingBagContent(
+    paddingValues: PaddingValues,
+    shoppingBag: MutableList<ShoppingBagProduct>
+) {
     LazyColumn(
         modifier = Modifier.padding(paddingValues)
     ) {
         items(
             items = shoppingBag
-        ) {shoppingBagProduct ->
+        ) { shoppingBagProduct ->
             ClientShoppingBagItem(shoppingBagProduct = shoppingBagProduct)
         }
     }
-
 }

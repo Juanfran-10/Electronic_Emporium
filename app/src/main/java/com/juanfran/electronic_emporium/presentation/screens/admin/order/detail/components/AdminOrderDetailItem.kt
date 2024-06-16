@@ -16,7 +16,6 @@ import com.juanfran.electronic_emporium.domain.model.OrderHasProducts
 
 @Composable
 fun AdminOrderDetailItem(orderHasProducts: OrderHasProducts) {
-
     Row(
         modifier = Modifier
             .fillMaxWidth()

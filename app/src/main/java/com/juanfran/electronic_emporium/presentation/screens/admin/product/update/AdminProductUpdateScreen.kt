@@ -13,8 +13,6 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray200
 
 @Composable
 fun AdminProductUpdateScreen(navController: NavHostController, productParam: String) {
-
-    Log.d("AdminProductUpdateScreen", "Category: ${productParam}")
     Scaffold(
         topBar = {
             DefaultTopBar(
@@ -24,7 +22,7 @@ fun AdminProductUpdateScreen(navController: NavHostController, productParam: Str
             )
         },
         backgroundColor = Gray200
-    ) {paddingValues ->
+    ) { paddingValues ->
         AdminProductUpdateContent(paddingValues = paddingValues)
     }
     UpdateProduct()

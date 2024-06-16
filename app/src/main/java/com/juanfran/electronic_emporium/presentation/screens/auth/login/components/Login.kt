@@ -13,36 +13,35 @@ import com.juanfran.electronic_emporium.presentation.screens.auth.login.LoginVie
 
 @Composable
 fun Login(navController: NavHostController, vm: LoginViewModel = hiltViewModel()) {
-
-    when(val response = vm.loginResponse) {
+    when (val response = vm.loginResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
-        is Resource.Success -> {
 
+        is Resource.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                if (response.data.user?.roles!!.size > 1) { // MAS DE UN ROL
+                if (response.data.user?.roles!!.size > 1) { //MAS DE UN ROL
                     navController.navigate(route = Graph.ROLES) {
                         popUpTo(Graph.AUTH) { inclusive = true }
                     }
-                }
-                else { // UN SOLO ROL
+                } else { // UN SOLO ROL
                     navController.navigate(route = Graph.CLIENT) {
                         popUpTo(Graph.AUTH) { inclusive = true }
                     }
                 }
             }
-
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_SHORT).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
     }
-
 }

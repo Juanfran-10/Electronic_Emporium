@@ -17,15 +17,15 @@ import kotlinx.coroutines.flow.flowOn
 class AddressRepositoryImpl(
     private val remoteDataSource: AddressRemoteDataSource,
     private val localDataSource: AddressLocalDataSource
-): AddressRepository {
-
+) : AddressRepository {
     override suspend fun create(address: Address): Resource<Address> {
         ResponseToRequest.send(remoteDataSource.create(address)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.insert(this.data.toEntity())
                     Resource.Success(this.data)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }
@@ -36,10 +36,10 @@ class AddressRepositoryImpl(
     override fun findByUser(idUser: String): Flow<Resource<List<Address>>> = flow {
         localDataSource.findByUser(idUser).collect() {
             it.run {
-                val addressLocalMap = this.map { addressEntity -> addressEntity.toAddress()  }
+                val addressLocalMap = this.map { addressEntity -> addressEntity.toAddress() }
                 try {
                     ResponseToRequest.send(remoteDataSource.findByUser(idUser)).run {
-                        when(this) {
+                        when (this) {
                             is Resource.Success -> {
                                 val addressRemote = this.data
 
@@ -49,6 +49,7 @@ class AddressRepositoryImpl(
 
                                 emit(Resource.Success(addressRemote))
                             }
+
                             else -> {
                                 emit(Resource.Success(addressLocalMap))
                             }
@@ -60,5 +61,4 @@ class AddressRepositoryImpl(
             }
         }
     }.flowOn(Dispatchers.IO)
-
 }

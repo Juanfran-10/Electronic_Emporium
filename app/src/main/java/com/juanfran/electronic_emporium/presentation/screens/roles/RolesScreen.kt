@@ -8,11 +8,9 @@ import com.juanfran.electronic_emporium.presentation.screens.roles.components.Ro
 
 @Composable
 fun RolesScreen(navController: NavHostController) {
-
     Scaffold(
         topBar = { DefaultTopBar(title = "Selecciona un rol") }
     ) { paddingValues ->
         RolesContent(paddingValues, navController)
     }
-
 }

@@ -11,21 +11,23 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.order.detail.
 import com.juanfran.electronic_emporium.presentation.screens.admin.order.detail.components.UpdateStatusOrder
 
 @Composable
-fun AdminOrderDetailScreen(navController: NavHostController, orderParam: String, vm: AdminOrderDetailViewModel = hiltViewModel()) {
-
+fun AdminOrderDetailScreen(
+    navController: NavHostController,
+    orderParam: String,
+    vm: AdminOrderDetailViewModel = hiltViewModel()
+) {
     Log.d("AdminOrderDetailScreen", "Order param: ${orderParam}")
 
     Scaffold(
         topBar = {
             DefaultTopBar(
-                title = "Detalle de la orden",
+                title = "Detalle del pedido",
                 navController = navController,
                 upAvailable = true
             )
         }
-    ) { paddingValues ->  
+    ) { paddingValues ->
         AdminOrderDetailContent(paddingValues, vm.order)
     }
     UpdateStatusOrder()
-    
 }

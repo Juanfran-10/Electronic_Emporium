@@ -14,8 +14,8 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDataSource): ShoppingBagRepository {
-
+class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDataSource) :
+    ShoppingBagRepository {
     override suspend fun add(product: ShoppingBagProduct) {
         CoroutineScope(Dispatchers.IO).launch {
             val shoppingBag = localDataSource.findById(product.id)
@@ -23,8 +23,7 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
                 Log.d("ShoppingBagRepositoryImpl", "Creando datos")
 
                 localDataSource.insert(product.toEntity())
-            }
-            else {
+            } else {
                 Log.d("ShoppingBagRepositoryImpl", "Actualizando datos")
                 localDataSource.update(product.id, product.quantity)
             }
@@ -37,7 +36,7 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
 
     override fun findAll(): Flow<List<ShoppingBagProduct>> = flow {
         localDataSource.findAll().collect() {
-            emit(it.map { entity ->  entity.toShoppingBagProduct()})
+            emit(it.map { entity -> entity.toShoppingBagProduct() })
         }
     }
 
@@ -52,5 +51,4 @@ class ShoppingBagRepositoryImpl(private val localDataSource: ShoppingBagLocalDat
     }
 
     override suspend fun getTotal(): Double = localDataSource.getTotal()
-
 }

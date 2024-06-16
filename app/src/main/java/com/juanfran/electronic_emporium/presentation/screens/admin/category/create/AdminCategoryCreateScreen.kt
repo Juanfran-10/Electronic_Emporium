@@ -10,11 +10,10 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 
 @Composable
 fun AdminCategoryCreateScreen(navController: NavHostController) {
-
     Scaffold(
         topBar = {
             DefaultTopBar(
-                title = "Nueva Categoria",
+                title = "Nueva Categoría",
                 upAvailable = true,
                 navController = navController
             )
@@ -24,5 +23,4 @@ fun AdminCategoryCreateScreen(navController: NavHostController) {
         AdminCategoryCreateContent(paddingValues = paddingValues)
     }
     CreateCategory()
-
 }

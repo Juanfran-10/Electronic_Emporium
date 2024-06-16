@@ -20,7 +20,6 @@ import com.juanfran.electronic_emporium.presentation.navigation.Graph
 @Composable
 fun RolesItem(rol: Rol, navController: NavHostController) {
     Column(modifier = Modifier.clickable {
-        Log.d("RolesItem", "Ruta: ${rol.route}")
         navController.navigate(route = rol.route) {
             popUpTo(route = Graph.ROLES) { inclusive = true }
         }

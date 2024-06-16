@@ -11,17 +11,20 @@ data class Category(
     @SerializedName("name") val name: String,
     @SerializedName("description") val description: String,
     @SerializedName("image") val image: String? = null,
-): Serializable {
-
-    fun toJson(): String = Gson().toJson(Category(
-        id,
-        name,
-        description,
-        if (!image.isNullOrBlank()) URLEncoder.encode(image, StandardCharsets.UTF_8.toString()) else "",
-    ))
+) : Serializable {
+    fun toJson(): String = Gson().toJson(
+        Category(
+            id,
+            name,
+            description,
+            if (!image.isNullOrBlank()) URLEncoder.encode(
+                image,
+                StandardCharsets.UTF_8.toString()
+            ) else "",
+        )
+    )
 
     companion object {
         fun fromJson(data: String): Category = Gson().fromJson(data, Category::class.java)
     }
-
 }

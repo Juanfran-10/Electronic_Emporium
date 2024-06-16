@@ -23,22 +23,25 @@ import com.juanfran.electronic_emporium.presentation.screens.client.product.list
 
 @Composable
 fun AdminProductListScreen(navController: NavHostController, categoryParam: String) {
-    Log.d("AdminProductListScreen", "Category: ${categoryParam}")
     val categoryParse = Category.fromJson(categoryParam).toJson()
 
     Scaffold(
         topBar = {
-                 DefaultTopBar(
-                     title = "Productos",
-                     navController = navController,
-                     upAvailable = true
-                 )
+            DefaultTopBar(
+                title = "Productos",
+                navController = navController,
+                upAvailable = true
+            )
         },
         floatingActionButton = {
             FloatingActionButton(
                 modifier = Modifier.padding(bottom = 20.dp),
                 onClick = {
-                    navController.navigate(route = AdminCategoryScreen.ProductCreate.passCategory(categoryParse))
+                    navController.navigate(
+                        route = AdminCategoryScreen.ProductCreate.passCategory(
+                            categoryParse
+                        )
+                    )
                 },
                 backgroundColor = Color.DarkGray
             ) {
@@ -49,9 +52,8 @@ fun AdminProductListScreen(navController: NavHostController, categoryParam: Stri
                 )
             }
         }
-    ) {paddingValues ->
+    ) { paddingValues ->
         GetProducts(navController = navController, paddingValues = paddingValues)
     }
     DeleteProduct()
-
 }

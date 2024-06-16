@@ -12,8 +12,11 @@ import androidx.navigation.NavHostController
 import com.juanfran.electronic_emporium.domain.model.Order
 
 @Composable
-fun ClientOrderListContent(paddingValues: PaddingValues, orders: List<Order>, navController: NavHostController) {
-    
+fun ClientOrderListContent(
+    paddingValues: PaddingValues,
+    orders: List<Order>,
+    navController: NavHostController
+) {
     LazyColumn(
         modifier = Modifier
             .padding(paddingValues)
@@ -22,9 +25,8 @@ fun ClientOrderListContent(paddingValues: PaddingValues, orders: List<Order>, na
     ) {
         items(
             items = orders
-        ) {order ->
+        ) { order ->
             ClientOrderListItem(order = order, navController = navController)
         }
     }
-    
 }

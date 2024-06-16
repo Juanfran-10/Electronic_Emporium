@@ -9,9 +9,7 @@ import com.juanfran.electronic_emporium.presentation.screens.profile.info.compon
 
 @Composable
 fun ClientCategoryListScreen(navController: NavHostController) {
-
-    Scaffold() {paddingValues ->
+    Scaffold() { paddingValues ->
         GetCategories(paddingValues, navController)
     }
-
 }

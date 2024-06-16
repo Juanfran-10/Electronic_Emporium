@@ -11,23 +11,29 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.product.updat
 
 @Composable
 fun UpdateProduct(vm: AdminProductUpdateViewModel = hiltViewModel()) {
-
-    when(val response = vm.productResponse) {
+    when (val response = vm.productResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-            // 401 TOKEN
-            Toast.makeText(LocalContext.current, "Los datos se han actualizado correctamete", Toast.LENGTH_LONG).show()
+            //401 TOKEN
+            Toast.makeText(
+                LocalContext.current,
+                "Los datos se han actualizado correctamente",
+                Toast.LENGTH_LONG
+            ).show()
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }
-
 }

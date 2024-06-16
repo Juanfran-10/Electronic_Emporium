@@ -7,7 +7,6 @@ import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface OrdersService {
-
     @GET("orders")
     suspend fun findAll(): Response<List<Order>>
 
@@ -16,5 +15,4 @@ interface OrdersService {
 
     @PUT("orders/{id}")
     suspend fun updateStatus(@Path("id") id: String): Response<Order>
-
 }

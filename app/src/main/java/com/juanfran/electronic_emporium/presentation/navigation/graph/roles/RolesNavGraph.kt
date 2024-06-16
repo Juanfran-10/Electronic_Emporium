@@ -15,7 +15,6 @@ fun NavGraphBuilder.RolesNavGraph(navController: NavHostController) {
         route = Graph.ROLES,
         startDestination = RolesScreen.Roles.route
     ) {
-
         composable(route = RolesScreen.Roles.route) {
             RolesScreen(navController)
         }
@@ -27,6 +26,5 @@ fun NavGraphBuilder.RolesNavGraph(navController: NavHostController) {
         composable(route = Graph.ADMIN) {
             AdminHomeScreen()
         }
-
     }
 }

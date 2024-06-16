@@ -12,10 +12,8 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 import java.util.*
 
-class ComposeFileProvider: FileProvider(R.xml.file_paths) {
-
+class ComposeFileProvider : FileProvider(R.xml.file_paths) {
     companion object {
-
         fun createFileFromUri(context: Context, uri: Uri): File? {
             return try {
                 val stream = context.contentResolver.openInputStream(uri)
@@ -33,7 +31,6 @@ class ComposeFileProvider: FileProvider(R.xml.file_paths) {
         }
 
         fun getImageUri(context: Context): Uri {
-
             val directory = File(context.cacheDir, "images")
             directory.mkdirs()
             val file = File.createTempFile(
@@ -52,14 +49,12 @@ class ComposeFileProvider: FileProvider(R.xml.file_paths) {
         fun getPathFromBitmap(context: Context, bitmap: Bitmap): String {
             val wrapper = ContextWrapper(context)
             var file = wrapper.getDir("Images", Context.MODE_PRIVATE)
-            file = File(file,"${UUID.randomUUID()}.jpg")
+            file = File(file, "${UUID.randomUUID()}.jpg")
             val stream: OutputStream = FileOutputStream(file)
-            bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
             stream.flush()
             stream.close()
             return file.path
         }
-
     }
-
 }

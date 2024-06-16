@@ -13,19 +13,23 @@ data class ShoppingBagProduct(
     @SerializedName("image1") val image1: String,
     @SerializedName("price") val price: Double,
     @SerializedName("quantity") var quantity: Int,
-): Serializable {
-
-    fun toJson(): String = Gson().toJson(ShoppingBagProduct(
-        id,
-        name,
-        idCategory,
-        if (!image1.isNullOrBlank()) URLEncoder.encode(image1, StandardCharsets.UTF_8.toString()) else "",
-        price,
-        quantity
-    ))
+) : Serializable {
+    fun toJson(): String = Gson().toJson(
+        ShoppingBagProduct(
+            id,
+            name,
+            idCategory,
+            if (!image1.isNullOrBlank()) URLEncoder.encode(
+                image1,
+                StandardCharsets.UTF_8.toString()
+            ) else "",
+            price,
+            quantity
+        )
+    )
 
     companion object {
-        fun fromJson(data: String): ShoppingBagProduct = Gson().fromJson(data, ShoppingBagProduct::class.java)
+        fun fromJson(data: String): ShoppingBagProduct =
+            Gson().fromJson(data, ShoppingBagProduct::class.java)
     }
-
 }

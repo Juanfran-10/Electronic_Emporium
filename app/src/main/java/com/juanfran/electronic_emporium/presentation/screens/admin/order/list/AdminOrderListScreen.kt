@@ -8,11 +8,9 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.order.list.co
 
 @Composable
 fun AdminOrderListScreen(navController: NavHostController, vm: AdminOrderListViewModel = hiltViewModel()) {
-
     vm.getOrders()
 
     Scaffold() { paddingValues ->  
         GetOrders(navController = navController, paddingValues = paddingValues)
     }
-    
 }

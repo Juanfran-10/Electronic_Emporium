@@ -9,9 +9,9 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Response
 import java.io.File
 
-class UsersRemoteDataSourceImpl(private val usersService: UsersService): UsersRemoteDataSource {
-
-    override suspend fun update(id: String, user: User): Response<User> = usersService.update(id, user)
+class UsersRemoteDataSourceImpl(private val usersService: UsersService) : UsersRemoteDataSource {
+    override suspend fun update(id: String, user: User): Response<User> =
+        usersService.update(id, user)
 
     override suspend fun updateWithImage(id: String, user: User, file: File): Response<User> {
 
@@ -26,5 +26,4 @@ class UsersRemoteDataSourceImpl(private val usersService: UsersService): UsersRe
 
         return usersService.updateWithImage(fileFormData, id, nameData, lastnameData, phoneData)
     }
-
 }

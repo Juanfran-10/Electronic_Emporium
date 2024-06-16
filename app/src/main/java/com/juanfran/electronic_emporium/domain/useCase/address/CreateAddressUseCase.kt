@@ -4,7 +4,5 @@ import com.juanfran.electronic_emporium.domain.model.Address
 import com.juanfran.electronic_emporium.domain.repository.AddressRepository
 
 class CreateAddressUseCase(private val repository: AddressRepository) {
-
     suspend operator fun invoke(address: Address) = repository.create(address)
-
 }

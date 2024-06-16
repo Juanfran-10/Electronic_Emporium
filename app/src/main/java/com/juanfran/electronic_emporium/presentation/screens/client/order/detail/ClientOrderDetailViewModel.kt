@@ -12,8 +12,7 @@ import javax.inject.Inject
 class ClientOrderDetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val ordersUseCase: OrdersUseCase
-): ViewModel() {
-
+) : ViewModel() {
     var data = savedStateHandle.get<String>("order")
     var order = Order.fromJson(data!!)
 
@@ -29,5 +28,4 @@ class ClientOrderDetailViewModel @Inject constructor(
             totalToPay = totalToPay + (ohp.quantity * ohp.product.price)
         }
     }
-
 }

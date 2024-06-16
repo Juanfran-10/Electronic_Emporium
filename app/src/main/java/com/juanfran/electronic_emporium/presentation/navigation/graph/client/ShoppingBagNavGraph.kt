@@ -30,7 +30,6 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController) {
         route = Graph.SHOPPING_BAG,
         startDestination = ShoppingBagScreen.ShoppingBag.route
     ) {
-
         composable(
             route = ShoppingBagScreen.ShoppingBag.route,
         ) {
@@ -71,6 +70,5 @@ fun NavGraphBuilder.ShoppingBagNavGraph(navController: NavHostController) {
                 ClientPaymentsStatusScreen(navController, it)
             }
         }
-
     }
 }

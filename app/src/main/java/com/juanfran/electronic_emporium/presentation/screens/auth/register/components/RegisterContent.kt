@@ -37,7 +37,6 @@ import com.juanfran.electronic_emporium.presentation.screens.auth.register.Regis
 
 @Composable
 fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltViewModel()) {
-
     val state = vm.state
     val context = LocalContext.current
 
@@ -48,10 +47,11 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
         }
     }
 
-    Box(modifier = Modifier
-        .padding(paddingValues = paddingValues)
-        .fillMaxSize(),
-        ) {
+    Box(
+        modifier = Modifier
+            .padding(paddingValues = paddingValues)
+            .fillMaxSize(),
+    ) {
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.banner_form),
@@ -68,7 +68,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
 
-        ) {
+            ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -85,7 +85,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                 )
                 Text(
                     modifier = Modifier.padding(top = 7.dp, start = 10.dp),
-                    text = "INTRODUCE ESTA INFORMACION",
+                    text = "INTRODUCE ESTA INFORMACIÓN",
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
                     color = Color.White
@@ -100,9 +100,10 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                 ),
                 backgroundColor = Color.White.copy(alpha = 0.8f)
             ) {
-                Column(modifier = Modifier
-                    .padding(top = 30.dp, start = 30.dp, end = 30.dp, bottom = 30.dp)
-                    .verticalScroll(rememberScrollState())
+                Column(
+                    modifier = Modifier
+                        .padding(top = 30.dp, start = 30.dp, end = 30.dp, bottom = 30.dp)
+                        .verticalScroll(rememberScrollState())
                 ) {
                     Text(
                         modifier = Modifier.padding(bottom = 20.dp),
@@ -171,8 +172,6 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     )
                 }
             }
-
         }
-
     }
 }

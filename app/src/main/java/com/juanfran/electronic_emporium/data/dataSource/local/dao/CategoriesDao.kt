@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CategoriesDao {
-    // INSERT INTO categories VALUES
+    //INSERT INTO categories VALUES
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(category: CategoryEntity)
 

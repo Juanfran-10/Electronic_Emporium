@@ -18,7 +18,7 @@ fun DialogCapturePicture(
     pickImage: () -> Unit,
 ) {
 
-    if (state.value) { // MOSTRAR EL DIALOG
+    if (state.value) { //MOSTRAR EL DIALOG
         AlertDialog(
             modifier = Modifier
                 .fillMaxWidth()
@@ -61,5 +61,4 @@ fun DialogCapturePicture(
             }
         )
     }
-
 }

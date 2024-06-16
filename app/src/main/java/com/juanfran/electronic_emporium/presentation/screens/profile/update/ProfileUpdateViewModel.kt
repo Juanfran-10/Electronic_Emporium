@@ -25,11 +25,10 @@ class ProfileUpdateViewModel @Inject constructor(
     private val usersUseCase: UsersUseCase,
     private val savedStateHandle: SavedStateHandle,
     @ApplicationContext private val context: Context
-): ViewModel() {
-
+) : ViewModel() {
     var state by mutableStateOf(ProfileUpdateState())
 
-    // ARGUMENTS
+    //ARGUMENTOS
     val data = savedStateHandle.get<String>("user")
     var user = User.fromJson(data!!)
 
@@ -54,10 +53,9 @@ class ProfileUpdateViewModel @Inject constructor(
     }
 
     fun onUpdate() {
-        if (file != null) { // SI SELECCIONO UNA IMAGEN
+        if (file != null) { //SI SELECCIONO UNA IMAGEN
             updateWithImage()
-        }
-        else {
+        } else {
             update()
         }
     }
@@ -105,5 +103,4 @@ class ProfileUpdateViewModel @Inject constructor(
     fun onPhoneInput(input: String) {
         state = state.copy(phone = input)
     }
-
 }

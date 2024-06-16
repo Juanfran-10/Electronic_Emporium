@@ -16,18 +16,19 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 import java.io.File
+
 class CategoriesRepositoryImpl(
     private val remoteDataSource: CategoriesRemoteDataSource,
     private val localDataSource: CategoriesLocalDataSource
-): CategoriesRepository {
-
+) : CategoriesRepository {
     override suspend fun create(category: Category, file: File): Resource<Category> {
         ResponseToRequest.send(remoteDataSource.create(category, file)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.create(this.data.toCategoryEntity())
                     Resource.Success(this.data)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }
@@ -36,14 +37,13 @@ class CategoriesRepositoryImpl(
     }
 
     override fun getCategories(): Flow<Resource<List<Category>>> = flow {
-
         localDataSource.getCategories().collect() {
             it.run {
-                val categoriesLocalMap = this.map { categoryEntity -> categoryEntity.toCategory()  }
+                val categoriesLocalMap = this.map { categoryEntity -> categoryEntity.toCategory() }
 
                 try {
                     ResponseToRequest.send(remoteDataSource.getCategories()).run {
-                        when(this) {
+                        when (this) {
                             is Resource.Success -> {
                                 val categoriesRemote = this.data
 
@@ -53,9 +53,11 @@ class CategoriesRepositoryImpl(
 
                                 emit(Resource.Success(categoriesRemote))
                             }
+
                             is Resource.Failure -> {
                                 emit(Resource.Success(categoriesLocalMap))
                             }
+
                             else -> {
                                 emit(Resource.Success(categoriesLocalMap))
                             }
@@ -64,17 +66,14 @@ class CategoriesRepositoryImpl(
                 } catch (e: Exception) {
                     emit(Resource.Success(categoriesLocalMap))
                 }
-
             }
         }
-
     }.flowOn(Dispatchers.IO)
 
 
     override suspend fun update(id: String, category: Category): Resource<Category> {
-
         ResponseToRequest.send(remoteDataSource.update(id, category)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.update(
                         id = this.data.id ?: "",
@@ -84,12 +83,12 @@ class CategoriesRepositoryImpl(
                     )
                     Resource.Success(this.data)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }
             }
         }
-
     }
 
     override suspend fun updateWithImage(
@@ -98,7 +97,7 @@ class CategoriesRepositoryImpl(
         file: File
     ): Resource<Category> {
         ResponseToRequest.send(remoteDataSource.updateWithImage(id, category, file)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.update(
                         id = this.data.id ?: "",
@@ -108,6 +107,7 @@ class CategoriesRepositoryImpl(
                     )
                     Resource.Success(this.data)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }
@@ -117,11 +117,12 @@ class CategoriesRepositoryImpl(
 
     override suspend fun delete(id: String): Resource<Unit> {
         ResponseToRequest.send(remoteDataSource.delete(id)).run {
-            return when(this) {
+            return when (this) {
                 is Resource.Success -> {
                     localDataSource.delete(id)
                     Resource.Success(Unit)
                 }
+
                 else -> {
                     Resource.Failure("Error desconocido")
                 }

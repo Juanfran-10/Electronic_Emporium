@@ -12,14 +12,16 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 import com.juanfran.electronic_emporium.presentation.ui.theme.Gray200
 
 @Composable
-fun ClientAddressCreateScreen(navController: NavHostController, vm: ClientAddressCreateViewModel = hiltViewModel()) {
-
+fun ClientAddressCreateScreen(
+    navController: NavHostController,
+    vm: ClientAddressCreateViewModel = hiltViewModel()
+) {
     vm.getSessionData()
 
     Scaffold(
         topBar = {
             DefaultTopBar(
-                title = "Nueva direccion",
+                title = "Nueva dirección",
                 navController = navController,
                 upAvailable = true
             )
@@ -29,5 +31,4 @@ fun ClientAddressCreateScreen(navController: NavHostController, vm: ClientAddres
         ClientAddressCreateContent(paddingValues)
     }
     CreateAddress()
-    
 }

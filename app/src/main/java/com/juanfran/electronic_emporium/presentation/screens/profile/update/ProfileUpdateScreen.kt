@@ -11,9 +11,6 @@ import com.juanfran.electronic_emporium.presentation.screens.profile.update.comp
 
 @Composable
 fun ProfileUpdateScreen(navController: NavHostController, userParam: String) {
-
-    Log.d("ProfileUpdateScreen", "Data: $userParam")
-
     Scaffold(
         topBar = {
             DefaultTopBar(
@@ -22,9 +19,8 @@ fun ProfileUpdateScreen(navController: NavHostController, userParam: String) {
                 upAvailable = true
             )
         }
-    ) {paddingValues ->
+    ) { paddingValues ->
         ProfileUpdateContent(paddingValues = paddingValues)
     }
     UpdateUser()
-
 }

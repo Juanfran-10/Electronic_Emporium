@@ -17,8 +17,7 @@ import javax.inject.Inject
 class ClientAddressCreateViewModel @Inject constructor(
     private val addressUseCase: AddressUseCase,
     private val authUseCase: AuthUseCase
-): ViewModel() {
-
+) : ViewModel() {
     var state by mutableStateOf(ClientAddressCreateState())
         private set
 

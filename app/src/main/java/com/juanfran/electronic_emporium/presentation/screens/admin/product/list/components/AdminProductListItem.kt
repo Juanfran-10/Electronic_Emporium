@@ -27,15 +27,17 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 import com.juanfran.electronic_emporium.presentation.ui.theme.Gray200
 
 @Composable
-fun AdminProductListItem(navController: NavHostController, product: Product, vm: AdminProductListViewModel = hiltViewModel()) {
-
+fun AdminProductListItem(
+    navController: NavHostController,
+    product: Product,
+    vm: AdminProductListViewModel = hiltViewModel()
+) {
     Column(
         Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
             .height(90.dp)
     ) {
         Row() {
-
             AsyncImage(
                 modifier = Modifier
                     .size(70.dp)
@@ -60,7 +62,7 @@ fun AdminProductListItem(navController: NavHostController, product: Product, vm:
                 )
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(
-                    text = product.price.toString() + "$",
+                    text = product.price.toString() + "€",
                     color = Color.Black,
                     fontSize = 13.sp
                 )
@@ -96,6 +98,4 @@ fun AdminProductListItem(navController: NavHostController, product: Product, vm:
             startIndent = 80.dp
         )
     }
-
-
 }

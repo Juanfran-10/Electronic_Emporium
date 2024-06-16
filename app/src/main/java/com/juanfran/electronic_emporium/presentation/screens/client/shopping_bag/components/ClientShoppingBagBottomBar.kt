@@ -17,8 +17,10 @@ import com.juanfran.electronic_emporium.presentation.screens.client.shopping_bag
 import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 
 @Composable
-fun ClientShoppingBagBottomBar(navController: NavHostController, vm: ClientShoppingBagViewModel = hiltViewModel()) {
-
+fun ClientShoppingBagBottomBar(
+    navController: NavHostController,
+    vm: ClientShoppingBagViewModel = hiltViewModel()
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -48,5 +50,4 @@ fun ClientShoppingBagBottomBar(navController: NavHostController, vm: ClientShopp
             onClick = { navController.navigate(route = ShoppingBagScreen.AddressList.route) }
         )
     }
-
 }

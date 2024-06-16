@@ -11,7 +11,6 @@ import java.io.File
 
 class CategoriesRemoteDataSourceImpl(private val categoriesService: CategoriesService) :
     CategoriesRemoteDataSource {
-
     override suspend fun create(category: Category, file: File): Response<Category> {
         val connection = file.toURI().toURL().openConnection()
         val mimeType = connection.contentType // "image/png | image/jpg"
@@ -49,6 +48,4 @@ class CategoriesRemoteDataSourceImpl(private val categoriesService: CategoriesSe
     }
 
     override suspend fun delete(id: String): Response<Unit> = categoriesService.delete(id)
-
-
 }

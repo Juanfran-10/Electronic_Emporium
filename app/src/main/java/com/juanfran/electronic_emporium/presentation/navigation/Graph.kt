@@ -1,7 +1,6 @@
 package com.juanfran.electronic_emporium.presentation.navigation
 
 object Graph {
-
     const val ROOT = "root_graph"
     const val AUTH = "auth_graph"
     const val ROLES = "roles_graph"
@@ -14,5 +13,4 @@ object Graph {
     const val CLIENT_ORDER = "client_order_graph"
     const val SHOPPING_BAG = "shopping_bag_graph"
     const val PROFILE = "profile_graph"
-
 }

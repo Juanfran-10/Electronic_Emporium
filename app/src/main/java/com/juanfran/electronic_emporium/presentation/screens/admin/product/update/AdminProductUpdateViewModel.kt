@@ -24,11 +24,10 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AdminProductUpdateViewModel @Inject constructor(
-   @ApplicationContext val context: Context,
-   private val savedStateHandle: SavedStateHandle,
-   private val productsUseCase: ProductsUseCase
-): ViewModel() {
-
+    @ApplicationContext val context: Context,
+    private val savedStateHandle: SavedStateHandle,
+    private val productsUseCase: ProductsUseCase
+) : ViewModel() {
     var state by mutableStateOf(AdminProductUpdateState())
         private set
 
@@ -62,8 +61,7 @@ class AdminProductUpdateViewModel @Inject constructor(
 
             val result = productsUseCase.updateProduct(product.id!!, state.toProduct())
             productResponse = result
-        }
-        else {
+        } else {
             if (file1 != null) {
                 files.add(file1!!)
                 state.imagesToUpdate.add(0)
@@ -73,7 +71,11 @@ class AdminProductUpdateViewModel @Inject constructor(
                 state.imagesToUpdate.add(1)
             }
 
-            val result = productsUseCase.updateProductWithImage(product.id!!, state.toProduct(), files.toList())
+            val result = productsUseCase.updateProductWithImage(
+                product.id!!,
+                state.toProduct(),
+                files.toList()
+            )
             productResponse = result
         }
         files.clear()
@@ -83,13 +85,12 @@ class AdminProductUpdateViewModel @Inject constructor(
     }
 
     fun pickImage(imageNumber: Int) = viewModelScope.launch {
-        val result = resultingActivityHandler.getContent("image/*") // URI
+        val result = resultingActivityHandler.getContent("image/*") //URI
         if (result != null) {
             if (imageNumber == 1) {
                 file1 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image1 = result.toString())
-            }
-            else if (imageNumber == 2) {
+            } else if (imageNumber == 2) {
                 file2 = ComposeFileProvider.createFileFromUri(context, result)
                 state = state.copy(image2 = result.toString())
             }
@@ -102,8 +103,7 @@ class AdminProductUpdateViewModel @Inject constructor(
             if (imageNumber == 1) {
                 state = state.copy(image1 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file1 = File(state.image1)
-            }
-            else if (imageNumber == 2) {
+            } else if (imageNumber == 2) {
                 state = state.copy(image2 = ComposeFileProvider.getPathFromBitmap(context, result))
                 file2 = File(state.image2)
             }
@@ -121,5 +121,4 @@ class AdminProductUpdateViewModel @Inject constructor(
     fun onPriceInput(input: String) {
         state = state.copy(price = input.toDouble())
     }
-
 }

@@ -88,7 +88,7 @@ fun AdminCategoryCreateContent(
                     modifier = Modifier.fillMaxWidth(),
                     value = state.name,
                     onValueChange = { vm.onNameInput(it) },
-                    label = "Nombre de la categoria",
+                    label = "Nombre de la categoría",
                     icon = Icons.Default.List
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -96,19 +96,16 @@ fun AdminCategoryCreateContent(
                     modifier = Modifier.fillMaxWidth(),
                     value = state.description,
                     onValueChange = { vm.onDescriptionInput(it) },
-                    label = "Descripcion",
+                    label = "Descripción",
                     icon = Icons.Outlined.Info
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 DefaultButton(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Crear categoria",
+                    text = "Crear categoría",
                     onClick = { vm.createCategory() }
                 )
             }
-
         }
-
     }
-
 }

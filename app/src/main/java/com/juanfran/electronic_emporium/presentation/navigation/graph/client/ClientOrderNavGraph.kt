@@ -13,7 +13,6 @@ fun NavGraphBuilder.ClientOrderNavGraph(navController: NavHostController) {
         route = Graph.CLIENT_ORDER,
         startDestination = ClientOrderScreen.OrderDetail.route
     ) {
-
         composable(
             route = ClientOrderScreen.OrderDetail.route,
             arguments = listOf(navArgument("order") {
@@ -24,7 +23,5 @@ fun NavGraphBuilder.ClientOrderNavGraph(navController: NavHostController) {
                 ClientOrderDetailScreen(navController, it)
             }
         }
-
-
     }
 }

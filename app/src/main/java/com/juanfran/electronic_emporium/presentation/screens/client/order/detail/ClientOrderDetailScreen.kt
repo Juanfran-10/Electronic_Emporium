@@ -12,19 +12,22 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.order.detail.
 import com.juanfran.electronic_emporium.presentation.screens.client.order.detail.components.ClientOrderDetailContent
 
 @Composable
-fun ClientOrderDetailScreen(navController: NavHostController, orderParam: String, vm: ClientOrderDetailViewModel = hiltViewModel()) {
+fun ClientOrderDetailScreen(
+    navController: NavHostController,
+    orderParam: String,
+    vm: ClientOrderDetailViewModel = hiltViewModel()
+) {
 
     Scaffold(
         topBar = {
             DefaultTopBar(
-                title = "Detalle de la orden",
+                title = "Detalle del pedido",
                 navController = navController,
                 upAvailable = true
             )
         }
-    ) { paddingValues ->  
+    ) { paddingValues ->
         ClientOrderDetailContent(paddingValues, vm.order)
     }
     UpdateStatusOrder()
-    
 }

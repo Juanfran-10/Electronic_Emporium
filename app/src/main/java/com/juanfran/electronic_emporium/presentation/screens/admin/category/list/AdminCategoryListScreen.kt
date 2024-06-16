@@ -21,7 +21,6 @@ import com.juanfran.electronic_emporium.presentation.screens.client.category.lis
 
 @Composable
 fun AdminCategoryListScreen(navController: NavHostController) {
-
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
@@ -38,9 +37,8 @@ fun AdminCategoryListScreen(navController: NavHostController) {
                 )
             }
         }
-    ) {paddingValues ->
+    ) { paddingValues ->
         GetCategories(navController, paddingValues)
     }
     DeleteCategory()
-
 }

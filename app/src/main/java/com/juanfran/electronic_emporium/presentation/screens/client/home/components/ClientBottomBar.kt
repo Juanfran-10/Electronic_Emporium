@@ -8,7 +8,6 @@ import com.juanfran.electronic_emporium.presentation.navigation.screen.client.Cl
 
 @Composable
 fun ClientBottomBar(navController: NavHostController) {
-
     val screens = listOf(
         ClientScreen.ProductList,
         ClientScreen.CategoryList,
@@ -31,5 +30,4 @@ fun ClientBottomBar(navController: NavHostController) {
             }
         }
     }
-
 }

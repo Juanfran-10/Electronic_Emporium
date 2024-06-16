@@ -9,8 +9,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface AuthService {
-
-    // http://192.168.1.15:3000/auth/login
+    // http://ipOrdenador:3000/auth/login
     @FormUrlEncoded
     @POST("auth/login")
     suspend fun login(
@@ -22,5 +21,4 @@ interface AuthService {
     suspend fun register(
         @Body() user: User,
     ): Response<AuthResponse>
-
 }

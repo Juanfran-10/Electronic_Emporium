@@ -3,7 +3,7 @@ package com.juanfran.electronic_emporium.domain.model
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
-data class IdentificationType (
+data class IdentificationType(
     val id: String,
     val name: String,
     val type: String,
@@ -17,6 +17,7 @@ data class IdentificationType (
     fun toJson(): String = Gson().toJson(this)
 
     companion object {
-        fun fromJson(data: String): IdentificationType = Gson().fromJson(data, IdentificationType::class.java)
+        fun fromJson(data: String): IdentificationType =
+            Gson().fromJson(data, IdentificationType::class.java)
     }
 }

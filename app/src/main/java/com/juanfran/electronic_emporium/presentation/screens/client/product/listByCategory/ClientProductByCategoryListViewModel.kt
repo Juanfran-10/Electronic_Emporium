@@ -17,8 +17,7 @@ import javax.inject.Inject
 class ClientProductByCategoryListViewModel @Inject constructor(
     private val productsUseCase: ProductsUseCase,
     private val savedStateHandle: SavedStateHandle,
-    ): ViewModel() {
-
+) : ViewModel() {
     var data = savedStateHandle.get<String>("category")
     var category = Category.fromJson(data!!)
 
@@ -34,11 +33,8 @@ class ClientProductByCategoryListViewModel @Inject constructor(
 
     fun getProducts() = viewModelScope.launch {
         productsResponse = Resource.Loading
-        productsUseCase.findByCategory(category.id!!).collect(){
+        productsUseCase.findByCategory(category.id!!).collect() {
             productsResponse = it
-            Log.d("ClientProductByCategoryListViewModel", "Data: ${productsResponse}")
         }
     }
-
-
 }

@@ -24,7 +24,11 @@ import com.juanfran.electronic_emporium.presentation.components.DefaultButton
 import com.juanfran.electronic_emporium.presentation.screens.client.order.detail.ClientOrderDetailViewModel
 
 @Composable
-fun ClientOrderDetailContent(paddingValues: PaddingValues, order: Order, vm: ClientOrderDetailViewModel = hiltViewModel()) {
+fun ClientOrderDetailContent(
+    paddingValues: PaddingValues,
+    order: Order,
+    vm: ClientOrderDetailViewModel = hiltViewModel()
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -85,7 +89,7 @@ fun ClientOrderDetailContent(paddingValues: PaddingValues, order: Order, vm: Cli
                         verticalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "Cliente y telefono",
+                            text = "Cliente y teléfono",
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.height(3.dp))
@@ -112,7 +116,7 @@ fun ClientOrderDetailContent(paddingValues: PaddingValues, order: Order, vm: Cli
                         verticalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "Direccion de entrega",
+                            text = "Dirección de entrega",
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.height(3.dp))
@@ -135,16 +139,12 @@ fun ClientOrderDetailContent(paddingValues: PaddingValues, order: Order, vm: Cli
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Text(
-                        text = "TOTAL: $${vm.totalToPay}",
+                        text = "TOTAL: €${vm.totalToPay}",
                         fontWeight = FontWeight.Bold,
                         fontSize = 18.sp
                     )
                 }
-
             }
         }
     }
-
-
-    
 }

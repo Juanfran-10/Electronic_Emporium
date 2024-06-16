@@ -13,13 +13,11 @@ import com.juanfran.electronic_emporium.domain.model.Address
 
 @Composable
 fun ClientAddressListContent(paddingValues: PaddingValues, addressList: List<Address>) {
-    
     LazyColumn() {
         items(
             items = addressList
-        ) {address ->
+        ) { address ->
             ClientAddressListItem(address = address)
         }
     }
-    
 }

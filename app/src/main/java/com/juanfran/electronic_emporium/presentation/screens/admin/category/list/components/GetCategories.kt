@@ -13,20 +13,28 @@ import com.juanfran.electronic_emporium.presentation.components.ProgressBar
 import com.juanfran.electronic_emporium.presentation.screens.admin.category.list.AdminCategoryListViewModel
 
 @Composable
-fun GetCategories(navController: NavHostController, paddingValues: PaddingValues, vm: AdminCategoryListViewModel = hiltViewModel()) {
-    when(val response = vm.categoriesResponse) {
+fun GetCategories(
+    navController: NavHostController,
+    paddingValues: PaddingValues,
+    vm: AdminCategoryListViewModel = hiltViewModel()
+) {
+    when (val response = vm.categoriesResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-           AdminCategoryListContent(navController, categories = response.data, paddingValues)
+            AdminCategoryListContent(navController, categories = response.data, paddingValues)
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

@@ -12,30 +12,28 @@ sealed class ClientScreen(
     val title: String,
     val icon: ImageVector
 ) {
-    object CategoryList: ClientScreen(
+    object CategoryList : ClientScreen(
         route = "client/category/list",
         title = "Categorias",
         icon = Icons.Default.List
     )
-    object ProductList: ClientScreen(
+
+    object ProductList : ClientScreen(
         route = "client/product/list",
         title = "Productos",
         icon = Icons.Default.ThumbUp
     )
 
-    object OrderList: ClientScreen(
+    object OrderList : ClientScreen(
         route = "client/order/list",
         title = "Pedidos",
         icon = Icons.Default.Info
     )
 
-    object Profile: ClientScreen(
+    object Profile : ClientScreen(
         route = "client/profile",
         title = "Perfil",
         icon = Icons.Default.Person
     )
-
-
-
 }
 

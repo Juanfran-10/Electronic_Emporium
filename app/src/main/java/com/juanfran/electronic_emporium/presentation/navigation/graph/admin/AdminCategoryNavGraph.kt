@@ -14,12 +14,11 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.product.updat
 import com.juanfran.electronic_emporium.presentation.screens.client.home.ClientHomeScreen
 import com.juanfran.electronic_emporium.presentation.screens.roles.RolesScreen
 
-    fun NavGraphBuilder.AdminCategoryNavGraph(navController: NavHostController) {
+fun NavGraphBuilder.AdminCategoryNavGraph(navController: NavHostController) {
     navigation(
         route = Graph.ADMIN_CATEGORY,
         startDestination = AdminCategoryScreen.CategoryCreate.route
     ) {
-
         composable(route = AdminCategoryScreen.CategoryCreate.route) {
             AdminCategoryCreateScreen(navController)
         }
@@ -66,6 +65,5 @@ import com.juanfran.electronic_emporium.presentation.screens.roles.RolesScreen
                 AdminProductUpdateScreen(navController, it)
             }
         }
-
     }
 }

@@ -37,12 +37,18 @@ import com.juanfran.electronic_emporium.presentation.navigation.Graph
 import com.juanfran.electronic_emporium.presentation.screens.profile.info.ProfileViewModel
 
 @Composable
-fun ProfileContent(paddingValues: PaddingValues, navController: NavHostController, vm: ProfileViewModel = hiltViewModel()) {
+fun ProfileContent(
+    paddingValues: PaddingValues,
+    navController: NavHostController,
+    vm: ProfileViewModel = hiltViewModel()
+) {
     val activity = LocalContext.current as? Activity
 
-    Box(modifier = Modifier
-        .padding(paddingValues)
-        .padding(bottom = 55.dp)) {
+    Box(
+        modifier = Modifier
+            .padding(paddingValues)
+            .padding(bottom = 55.dp)
+    ) {
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.profile_background),
@@ -98,8 +104,7 @@ fun ProfileContent(paddingValues: PaddingValues, navController: NavHostControlle
                     contentDescription = "",
                     contentScale = ContentScale.Crop
                 )
-            }
-            else {
+            } else {
                 Image(
                     modifier = Modifier
                         .size(150.dp)
@@ -118,7 +123,7 @@ fun ProfileContent(paddingValues: PaddingValues, navController: NavHostControlle
                 ),
                 backgroundColor = Color.White.copy(alpha = 0.7f)
             ) {
-                
+
                 Column(
                     modifier = Modifier.padding(horizontal = 30.dp, vertical = 20.dp)
                 ) {
@@ -133,7 +138,7 @@ fun ProfileContent(paddingValues: PaddingValues, navController: NavHostControlle
                             contentDescription = ""
                         )
                         Column(modifier = Modifier.padding(horizontal = 10.dp)) {
-                            Text(text = "${vm.user?.name} ${vm.user?.lastname}" )
+                            Text(text = "${vm.user?.name} ${vm.user?.lastname}")
                             Text(
                                 text = "Nombre de usuario",
                                 fontSize = 12.sp,
@@ -188,12 +193,8 @@ fun ProfileContent(paddingValues: PaddingValues, navController: NavHostControlle
                         }
                     )
                 }
-                
-
-
             }
         }
     }
-
 }
 

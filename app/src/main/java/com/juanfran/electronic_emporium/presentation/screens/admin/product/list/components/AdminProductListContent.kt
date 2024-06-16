@@ -14,7 +14,11 @@ import com.juanfran.electronic_emporium.domain.model.Product
 import com.juanfran.electronic_emporium.presentation.screens.admin.product.list.AdminProductListViewModel
 
 @Composable
-fun AdminProductListContent(navController: NavHostController, paddingValues: PaddingValues, products: List<Product>) {
+fun AdminProductListContent(
+    navController: NavHostController,
+    paddingValues: PaddingValues,
+    products: List<Product>
+) {
     LazyColumn(
         modifier = Modifier
             .padding(paddingValues = paddingValues)

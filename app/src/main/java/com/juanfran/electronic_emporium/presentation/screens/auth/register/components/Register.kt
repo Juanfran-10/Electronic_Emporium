@@ -13,9 +13,11 @@ import com.juanfran.electronic_emporium.presentation.screens.auth.register.Regis
 
 @Composable
 fun Register(navController: NavHostController, vm: RegisterViewModel = hiltViewModel()) {
+    when (val response = vm.registerResponse) {
+        Resource.Loading -> {
+            ProgressBar()
+        }
 
-    when(val response = vm.registerResponse) {
-        Resource.Loading -> { ProgressBar() }
         is Resource.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
@@ -24,14 +26,15 @@ fun Register(navController: NavHostController, vm: RegisterViewModel = hiltViewM
                 }
             }
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
                 Toast.makeText(LocalContext.current, "Error desconocido", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 }

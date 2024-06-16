@@ -25,13 +25,22 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray100
 import com.juanfran.electronic_emporium.presentation.ui.theme.Gray200
 
 @Composable
-fun AdminCategoryListItem(navController: NavHostController, category: Category, vm: AdminCategoryListViewModel = hiltViewModel()) {
-
+fun AdminCategoryListItem(
+    navController: NavHostController,
+    category: Category,
+    vm: AdminCategoryListViewModel = hiltViewModel()
+) {
     Column(
         Modifier
             .padding(start = 20.dp, end = 20.dp, top = 15.dp)
             .height(90.dp)
-            .clickable { navController.navigate(route = AdminCategoryScreen.ProductList.passCategory(category.toJson())) }
+            .clickable {
+                navController.navigate(
+                    route = AdminCategoryScreen.ProductList.passCategory(
+                        category.toJson()
+                    )
+                )
+            }
     ) {
         Row() {
 
@@ -89,6 +98,4 @@ fun AdminCategoryListItem(navController: NavHostController, category: Category, 
             startIndent = 80.dp
         )
     }
-
-
 }

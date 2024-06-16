@@ -15,7 +15,6 @@ fun DotsIndicator(
     totalDots: Int,
     selectedIndex: Int
 ) {
-
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()

@@ -27,8 +27,10 @@ import com.juanfran.electronic_emporium.presentation.components.DefaultTextField
 import com.juanfran.electronic_emporium.presentation.screens.client.address.create.ClientAddressCreateViewModel
 
 @Composable
-fun ClientAddressCreateContent(paddingValues: PaddingValues, vm: ClientAddressCreateViewModel = hiltViewModel()) {
-
+fun ClientAddressCreateContent(
+    paddingValues: PaddingValues,
+    vm: ClientAddressCreateViewModel = hiltViewModel()
+) {
     val state = vm.state
 
     Column(
@@ -66,7 +68,7 @@ fun ClientAddressCreateContent(paddingValues: PaddingValues, vm: ClientAddressCr
                     modifier = Modifier.fillMaxWidth(),
                     value = state.address,
                     onValueChange = { vm.onAddressInput(it) },
-                    label = "Direccion",
+                    label = "Dirección",
                     icon = Icons.Default.LocationOn
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -80,13 +82,10 @@ fun ClientAddressCreateContent(paddingValues: PaddingValues, vm: ClientAddressCr
                 Spacer(modifier = Modifier.weight(1f))
                 DefaultButton(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Crear direccion",
+                    text = "Crear dirección",
                     onClick = { vm.createAddress() }
                 )
             }
-
         }
-
     }
-    
 }

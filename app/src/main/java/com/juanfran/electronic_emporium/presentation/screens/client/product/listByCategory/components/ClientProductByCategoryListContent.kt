@@ -11,7 +11,11 @@ import androidx.navigation.NavHostController
 import com.juanfran.electronic_emporium.domain.model.Product
 
 @Composable
-fun ClientProductByCategoryListContent(navController: NavHostController, paddingValues: PaddingValues, products: List<Product>) {
+fun ClientProductByCategoryListContent(
+    navController: NavHostController,
+    paddingValues: PaddingValues,
+    products: List<Product>
+) {
     LazyColumn(
         modifier = Modifier
             .padding(paddingValues = paddingValues)

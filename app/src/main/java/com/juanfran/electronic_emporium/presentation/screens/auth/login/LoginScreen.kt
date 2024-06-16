@@ -11,7 +11,6 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.EcommerceAppMVVMTh
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
-    
     Scaffold(
     ) { paddingValues ->
         LoginContent(navController = navController, paddingValues)

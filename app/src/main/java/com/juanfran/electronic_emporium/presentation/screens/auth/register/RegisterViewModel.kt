@@ -15,8 +15,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
-
+class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
     var state by mutableStateOf(RegisterState())
         private set
     var registerResponse by mutableStateOf<Resource<AuthResponse>?>(null)
@@ -64,41 +63,32 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
         if (state.name == "") {
             errorMessage = "Ingresa el nombre"
             return false
-        }
-        else if (state.lastname == "") {
+        } else if (state.lastname == "") {
             errorMessage = "Ingresa el apellido"
             return false
-        }
-        else if (state.email == "") {
+        } else if (state.email == "") {
             errorMessage = "Ingresa el email"
             return false
-        }
-        else if (state.phone == "") {
-            errorMessage = "Ingresa el telefono"
+        } else if (state.phone == "") {
+            errorMessage = "Ingresa el teléfono"
             return false
-        }
-        else if (state.password == "") {
+        } else if (state.password == "") {
             errorMessage = "Ingresa el password"
             return false
-        }
-        else if (state.confirmPassword == "") {
-            errorMessage = "Ingresa el password de confirmacion"
+        } else if (state.confirmPassword == "") {
+            errorMessage = "Ingresa el password de confirmación"
             return false
-        }
-        else if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
-            errorMessage = "El email no es valido"
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
+            errorMessage = "El email no es válido"
             return false
-        }
-        else if (state.password.length < 6) {
+        } else if (state.password.length < 6) {
             errorMessage = "La contraseña debe tener al menos 6 caracteres"
             return false
-        }
-        else if (state.password != state.confirmPassword) {
+        } else if (state.password != state.confirmPassword) {
             errorMessage = "Las contraseñas no coinciden"
             return false
         }
 
         return true
     }
-
 }

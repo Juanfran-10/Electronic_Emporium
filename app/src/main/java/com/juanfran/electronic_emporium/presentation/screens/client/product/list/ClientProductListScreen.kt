@@ -12,8 +12,10 @@ import com.juanfran.electronic_emporium.presentation.screens.client.product.list
 import com.juanfran.electronic_emporium.presentation.screens.client.product.list.components.GetProducts
 
 @Composable
-fun ClientProductListScreen(navController: NavHostController, vm: ClientProductListViewModel = hiltViewModel()) {
-
+fun ClientProductListScreen(
+    navController: NavHostController,
+    vm: ClientProductListViewModel = hiltViewModel()
+) {
     vm.getProducts()
 
     Scaffold(
@@ -31,8 +33,7 @@ fun ClientProductListScreen(navController: NavHostController, vm: ClientProductL
                 }
             )
         }
-    ) {paddingValues ->
+    ) { paddingValues ->
         GetProducts(navController = navController, paddingValues = paddingValues)
     }
-
 }

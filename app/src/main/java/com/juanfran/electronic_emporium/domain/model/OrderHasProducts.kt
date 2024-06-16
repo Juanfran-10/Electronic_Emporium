@@ -9,17 +9,18 @@ data class OrderHasProducts(
     @SerializedName("id_product") val idProduct: String,
     @SerializedName("quantity") val quantity: Int,
     @SerializedName("product") val product: Product,
-): Serializable {
-
-    fun toJson(): String = Gson().toJson(OrderHasProducts(
-        idOrder,
-        idProduct,
-        quantity,
-        Product.fromJson(product.toJson())
-    ))
+) : Serializable {
+    fun toJson(): String = Gson().toJson(
+        OrderHasProducts(
+            idOrder,
+            idProduct,
+            quantity,
+            Product.fromJson(product.toJson())
+        )
+    )
 
     companion object {
-        fun fromJson(data: String): OrderHasProducts = Gson().fromJson(data, OrderHasProducts::class.java)
+        fun fromJson(data: String): OrderHasProducts =
+            Gson().fromJson(data, OrderHasProducts::class.java)
     }
-
 }

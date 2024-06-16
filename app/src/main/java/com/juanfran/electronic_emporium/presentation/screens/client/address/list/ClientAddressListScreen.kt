@@ -21,8 +21,10 @@ import com.juanfran.electronic_emporium.presentation.screens.client.address.list
 import com.juanfran.electronic_emporium.presentation.screens.client.address.list.components.GetAddress
 
 @Composable
-fun ClientAddressListScreen(navController: NavHostController, vm: ClientAddressListViewModel = hiltViewModel()) {
-
+fun ClientAddressListScreen(
+    navController: NavHostController,
+    vm: ClientAddressListViewModel = hiltViewModel()
+) {
     vm.getSessionData()
 
     Scaffold(
@@ -50,7 +52,9 @@ fun ClientAddressListScreen(navController: NavHostController, vm: ClientAddressL
         },
         bottomBar = {
             DefaultButton(
-                modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 20.dp).fillMaxWidth(),
+                modifier = Modifier
+                    .padding(start = 20.dp, end = 20.dp, bottom = 20.dp)
+                    .fillMaxWidth(),
                 text = "Continuar",
                 onClick = { navController.navigate(route = ShoppingBagScreen.PaymentsForm.route) }
             )
@@ -58,5 +62,4 @@ fun ClientAddressListScreen(navController: NavHostController, vm: ClientAddressL
     ) { paddingValues ->
         GetAddress(paddingValues)
     }
-    
 }

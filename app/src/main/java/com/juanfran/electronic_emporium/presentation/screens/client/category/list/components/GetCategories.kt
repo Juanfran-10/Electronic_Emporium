@@ -14,20 +14,28 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.category.list
 import com.juanfran.electronic_emporium.presentation.screens.client.category.list.ClientCategoryListViewModel
 
 @Composable
-fun GetCategories(paddingValues: PaddingValues, navController: NavHostController, vm: ClientCategoryListViewModel = hiltViewModel()) {
-    when(val response = vm.categoriesResponse) {
+fun GetCategories(
+    paddingValues: PaddingValues,
+    navController: NavHostController,
+    vm: ClientCategoryListViewModel = hiltViewModel()
+) {
+    when (val response = vm.categoriesResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-           ClientCategoryListContent(paddingValues, navController, categories = response.data)
+            ClientCategoryListContent(paddingValues, navController, categories = response.data)
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

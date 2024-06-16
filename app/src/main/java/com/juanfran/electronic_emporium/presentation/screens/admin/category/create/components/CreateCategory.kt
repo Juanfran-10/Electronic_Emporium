@@ -10,7 +10,6 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.category.crea
 
 @Composable
 fun CreateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
-
     when (val response = vm.categoryResponse) {
         Resource.Loading -> {
             ProgressBar()
@@ -21,7 +20,7 @@ fun CreateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
             vm.clearForm()
             Toast.makeText(
                 LocalContext.current,
-                "Los datos se han actualizado correctamete",
+                "Los datos se han actualizado correctamente",
                 Toast.LENGTH_LONG
             ).show()
         }
@@ -37,5 +36,4 @@ fun CreateCategory(vm: AdminCategoryCreateViewModel = hiltViewModel()) {
             }
         }
     }
-
 }

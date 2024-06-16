@@ -4,15 +4,15 @@ import com.juanfran.electronic_emporium.data.dataSource.local.dao.ProductsDao
 import com.juanfran.electronic_emporium.data.dataSource.local.entity.ProductEntity
 import kotlinx.coroutines.flow.Flow
 
-class ProductsLocalDataSourceImpl(private val productsDao: ProductsDao): ProductsLocalDataSource {
-
+class ProductsLocalDataSourceImpl(private val productsDao: ProductsDao) : ProductsLocalDataSource {
     override suspend fun insert(product: ProductEntity) = productsDao.insert(product)
 
     override suspend fun insertAll(products: List<ProductEntity>) = productsDao.insertAll(products)
 
     override fun findAll(): Flow<List<ProductEntity>> = productsDao.findAll()
 
-    override fun findByCategory(idCategory: String): Flow<List<ProductEntity>> = productsDao.findByCategory(idCategory)
+    override fun findByCategory(idCategory: String): Flow<List<ProductEntity>> =
+        productsDao.findByCategory(idCategory)
 
     override suspend fun update(
         id: String,

@@ -11,8 +11,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class RolesViewModel @Inject constructor(private val authUseCase: AuthUseCase): ViewModel() {
-
+class RolesViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
     var authResponse by mutableStateOf(AuthResponse())
 
     init {
@@ -26,5 +25,4 @@ class RolesViewModel @Inject constructor(private val authUseCase: AuthUseCase): 
             }
         }
     }
-
 }

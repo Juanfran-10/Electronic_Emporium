@@ -21,18 +21,17 @@ import com.juanfran.electronic_emporium.presentation.screens.client.product.list
 
 @Composable
 fun ClientProductByCategoryListScreen(navController: NavHostController, categoryParam: String) {
-    Log.d("AdminProductListScreen", "Category: ${categoryParam}")
     val categoryParse = Category.fromJson(categoryParam).toJson()
 
     Scaffold(
         topBar = {
-                 DefaultTopBar(
-                     title = "Productos",
-                     navController = navController,
-                     upAvailable = true
-                 )
+            DefaultTopBar(
+                title = "Productos",
+                navController = navController,
+                upAvailable = true
+            )
         },
-    ) {paddingValues ->
+    ) { paddingValues ->
         GetProductsByCategory(navController = navController, paddingValues = paddingValues)
     }
 }

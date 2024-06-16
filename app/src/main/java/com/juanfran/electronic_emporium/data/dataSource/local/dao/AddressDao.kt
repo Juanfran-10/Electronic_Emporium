@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AddressDao {
-    // INSERT INTO categories VALUES
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(address: AddressEntity)
 

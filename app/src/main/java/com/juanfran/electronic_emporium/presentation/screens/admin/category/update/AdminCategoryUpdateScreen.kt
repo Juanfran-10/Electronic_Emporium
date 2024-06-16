@@ -13,13 +13,12 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray200
 
 @Composable
 fun AdminCategoryUpdateScreen(navController: NavHostController, categoryParam: String) {
-
     Log.d("AdminCategoryUpdateScreen", "Data: $categoryParam")
 
     Scaffold(
         topBar = {
             DefaultTopBar(
-                title = "Actualizar Categoria",
+                title = "Actualizar Categoría",
                 upAvailable = true,
                 navController = navController
             )
@@ -29,5 +28,4 @@ fun AdminCategoryUpdateScreen(navController: NavHostController, categoryParam: S
         AdminCategoryUpdateContent(paddingValues = paddingValues)
     }
     UpdateCategory()
-
 }

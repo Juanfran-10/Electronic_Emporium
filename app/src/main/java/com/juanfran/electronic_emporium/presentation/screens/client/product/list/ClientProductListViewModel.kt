@@ -13,18 +13,16 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ClientProductListViewModel @Inject constructor(private val productsUseCase: ProductsUseCase): ViewModel() {
-
+class ClientProductListViewModel @Inject constructor(private val productsUseCase: ProductsUseCase) :
+    ViewModel() {
     var productsResponse by mutableStateOf<Resource<List<Product>>?>(null)
         private set
 
     var search by mutableStateOf("")
 
-
     fun getProducts() = viewModelScope.launch {
         productsResponse = Resource.Loading
         productsUseCase.findAll().collect() {
-            Log.d("ClientProductListViewModel", "Data: $it")
             productsResponse = it
         }
     }
@@ -32,7 +30,6 @@ class ClientProductListViewModel @Inject constructor(private val productsUseCase
     fun getProductsByName(name: String) = viewModelScope.launch {
         productsResponse = Resource.Loading
         productsUseCase.findByName(name).collect() {
-            Log.d("ClientProductListViewModel", "Data: $it")
             productsResponse = it
         }
     }
@@ -40,5 +37,4 @@ class ClientProductListViewModel @Inject constructor(private val productsUseCase
     fun onSearchInput(value: String) {
         search = value
     }
-
 }

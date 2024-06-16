@@ -18,8 +18,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
-
     @Provides
     @Singleton
     fun provideOkHttpClient(datastore: AuthDatastore) = OkHttpClient.Builder().addInterceptor {
@@ -83,5 +81,4 @@ object NetworkModule {
     fun provideOrdersService(retrofit: Retrofit): OrdersService {
         return retrofit.create(OrdersService::class.java)
     }
-
 }

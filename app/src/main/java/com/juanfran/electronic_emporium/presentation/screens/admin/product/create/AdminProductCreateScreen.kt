@@ -12,8 +12,6 @@ import com.juanfran.electronic_emporium.presentation.ui.theme.Gray200
 
 @Composable
 fun AdminProductCreateScreen(navController: NavHostController, categoryParam: String) {
-
-    Log.d("AdminProductListScreen", "Category: ${categoryParam}")
     Scaffold(
         topBar = {
             DefaultTopBar(
@@ -23,7 +21,7 @@ fun AdminProductCreateScreen(navController: NavHostController, categoryParam: St
             )
         },
         backgroundColor = Gray100
-    ) {paddingValues ->
+    ) { paddingValues ->
         AdminProductCreateContent(paddingValues = paddingValues)
     }
     CreateProduct()

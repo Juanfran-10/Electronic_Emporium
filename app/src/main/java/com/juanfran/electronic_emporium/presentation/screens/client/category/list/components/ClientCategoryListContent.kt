@@ -24,7 +24,7 @@ fun ClientCategoryListContent(
     ) {
         items(
             items = categories
-        ) {category ->
+        ) { category ->
             ClientCategoryListItem(
                 navController = navController,
                 category = category

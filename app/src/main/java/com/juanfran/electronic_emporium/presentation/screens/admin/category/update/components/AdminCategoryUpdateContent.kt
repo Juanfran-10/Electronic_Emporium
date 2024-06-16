@@ -28,7 +28,10 @@ import com.juanfran.electronic_emporium.presentation.screens.admin.category.crea
 import com.juanfran.electronic_emporium.presentation.screens.admin.category.update.AdminCategoryUpdateViewModel
 
 @Composable
-fun AdminCategoryUpdateContent(paddingValues: PaddingValues, vm: AdminCategoryUpdateViewModel = hiltViewModel()) {
+fun AdminCategoryUpdateContent(
+    paddingValues: PaddingValues,
+    vm: AdminCategoryUpdateViewModel = hiltViewModel()
+) {
     val state = vm.state
     vm.resultingActivityHandler.handle()
     val stateDialog = remember { mutableStateOf(false) }
@@ -55,8 +58,7 @@ fun AdminCategoryUpdateContent(paddingValues: PaddingValues, vm: AdminCategoryUp
                 model = state.image,
                 contentDescription = ""
             )
-        }
-        else {
+        } else {
             Image(
                 modifier = Modifier
                     .size(150.dp)
@@ -87,7 +89,7 @@ fun AdminCategoryUpdateContent(paddingValues: PaddingValues, vm: AdminCategoryUp
                     modifier = Modifier.fillMaxWidth(),
                     value = state.name,
                     onValueChange = { vm.onNameInput(it) },
-                    label = "Nombre de la categoria",
+                    label = "Nombre de la categoría",
                     icon = Icons.Default.List
                 )
                 Spacer(modifier = Modifier.height(10.dp))
@@ -95,19 +97,16 @@ fun AdminCategoryUpdateContent(paddingValues: PaddingValues, vm: AdminCategoryUp
                     modifier = Modifier.fillMaxWidth(),
                     value = state.description,
                     onValueChange = { vm.onDescriptionInput(it) },
-                    label = "Descripcion",
+                    label = "Descripción",
                     icon = Icons.Outlined.Info
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 DefaultButton(
                     modifier = Modifier.fillMaxWidth(),
-                    text = "Actualizar categoria",
+                    text = "Actualizar categoría",
                     onClick = { vm.onUpdate() }
                 )
             }
-
         }
-
     }
-
 }

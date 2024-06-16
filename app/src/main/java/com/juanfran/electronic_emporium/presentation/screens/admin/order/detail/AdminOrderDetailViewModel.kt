@@ -15,8 +15,7 @@ import javax.inject.Inject
 class AdminOrderDetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val ordersUseCase: OrdersUseCase
-): ViewModel() {
-
+) : ViewModel() {
     var data = savedStateHandle.get<String>("order")
     var order = Order.fromJson(data!!)
     var ordersStatusResponse by mutableStateOf<Resource<Order>?>(null)
@@ -39,5 +38,4 @@ class AdminOrderDetailViewModel @Inject constructor(
         val result = ordersUseCase.updateStatusOrders(id)
         ordersStatusResponse = result
     }
-
 }

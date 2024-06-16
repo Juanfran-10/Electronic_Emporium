@@ -11,20 +11,28 @@ import com.juanfran.electronic_emporium.presentation.components.ProgressBar
 import com.juanfran.electronic_emporium.presentation.screens.client.order.list.ClientOrderListViewModel
 
 @Composable
-fun GetOrders(navController: NavHostController, paddingValues: PaddingValues, vm: ClientOrderListViewModel = hiltViewModel()) {
-    when(val response = vm.ordersResponse) {
+fun GetOrders(
+    navController: NavHostController,
+    paddingValues: PaddingValues,
+    vm: ClientOrderListViewModel = hiltViewModel()
+) {
+    when (val response = vm.ordersResponse) {
         Resource.Loading -> {
             ProgressBar()
         }
+
         is Resource.Success -> {
-           ClientOrderListContent(paddingValues, response.data, navController)
+            ClientOrderListContent(paddingValues, response.data, navController)
         }
+
         is Resource.Failure -> {
             Toast.makeText(LocalContext.current, response.message, Toast.LENGTH_LONG).show()
         }
+
         else -> {
             if (response != null) {
-                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG).show()
+                Toast.makeText(LocalContext.current, "Hubo error desconocido", Toast.LENGTH_LONG)
+                    .show()
             }
         }
     }

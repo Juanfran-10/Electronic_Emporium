@@ -10,26 +10,31 @@ import dagger.hilt.components.SingletonComponent
 @Module
 @InstallIn(SingletonComponent::class)
 object RemoteDataModule {
+    @Provides
+    fun provideAuthRemoteDataSource(authService: AuthService): AuthRemoteDataSource =
+        AuthRemoteDataSourceImpl(authService)
 
     @Provides
-    fun provideAuthRemoteDataSource(authService: AuthService): AuthRemoteDataSource = AuthRemoteDataSourceImpl(authService)
+    fun provideUsersRemoteDataSource(usersService: UsersService): UsersRemoteDataSource =
+        UsersRemoteDataSourceImpl(usersService)
 
     @Provides
-    fun provideUsersRemoteDataSource(usersService: UsersService): UsersRemoteDataSource = UsersRemoteDataSourceImpl(usersService)
+    fun provideCategoriesRemoteDataSource(categoriesService: CategoriesService): CategoriesRemoteDataSource =
+        CategoriesRemoteDataSourceImpl(categoriesService)
 
     @Provides
-    fun provideCategoriesRemoteDataSource(categoriesService: CategoriesService): CategoriesRemoteDataSource = CategoriesRemoteDataSourceImpl(categoriesService)
+    fun provideProductsRemoteDataSource(productsService: ProductsService): ProductsRemoteDataSource =
+        ProductsRemoteDataSourceImpl(productsService)
 
     @Provides
-    fun provideProductsRemoteDataSource(productsService: ProductsService): ProductsRemoteDataSource = ProductsRemoteDataSourceImpl(productsService)
+    fun provideAddressRemoteDataSource(addressService: AddressService): AddressRemoteDataSource =
+        AddressRemoteDataSourceImpl(addressService)
 
     @Provides
-    fun provideAddressRemoteDataSource(addressService: AddressService): AddressRemoteDataSource = AddressRemoteDataSourceImpl(addressService)
+    fun provideMercadoPagoRemoteDataSource(mercadoPagoService: MercadoPagoService): MercadoPagoRemoteDataSource =
+        MercadoPagoRemoteDataSourceImpl(mercadoPagoService)
 
     @Provides
-    fun provideMercadoPagoRemoteDataSource(mercadoPagoService: MercadoPagoService): MercadoPagoRemoteDataSource = MercadoPagoRemoteDataSourceImpl(mercadoPagoService)
-
-    @Provides
-    fun provideOrdersRemoteDataSource(ordersService: OrdersService): OrdersRemoteDataSource = OrdersRemoteDataSourceImpl(ordersService)
-
+    fun provideOrdersRemoteDataSource(ordersService: OrdersService): OrdersRemoteDataSource =
+        OrdersRemoteDataSourceImpl(ordersService)
 }
