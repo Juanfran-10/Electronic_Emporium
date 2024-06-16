@@ -6,10 +6,8 @@ import androidx.navigation.NavHostController
 import com.juanfran.electronic_emporium.presentation.screens.client.payments.status.components.ClientPaymentsStatusContent
 
 @Composable
-fun ClientPaymentsStatusScreen(navController: NavHostController, paymentResponseParam: String) {
-    
+fun ClientPaymentsStatusScreen() {
     Scaffold() { paddingValues ->
-        ClientPaymentsStatusContent(paddingValues = paddingValues, navController = navController)
+        ClientPaymentsStatusContent(paddingValues = paddingValues)
     }
-    
 }

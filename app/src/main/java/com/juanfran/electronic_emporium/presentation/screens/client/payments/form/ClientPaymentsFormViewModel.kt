@@ -1,12 +1,9 @@
 package com.juanfran.electronic_emporium.presentation.screens.client.payments.form
 
-import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.juanfran.electronic_emporium.domain.model.IdentificationType
-import com.juanfran.electronic_emporium.domain.model.Installment
-import com.juanfran.electronic_emporium.domain.useCase.mercado_pago.MercadoPagoUseCase
 import com.juanfran.electronic_emporium.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.first
@@ -14,21 +11,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ClientPaymentsFormViewModel @Inject constructor(private val mercadoPagoUseCase: MercadoPagoUseCase): ViewModel() {
-
+class ClientPaymentsFormViewModel @Inject constructor() :
+    ViewModel() {
     var state by mutableStateOf(ClientPaymentsFormState())
         private set
 
     var identificationTypesResponse by mutableStateOf<Resource<List<IdentificationType>>?>(null)
         private set
-
-
-    fun getIdentificationTypes() = viewModelScope.launch {
-        identificationTypesResponse = Resource.Loading
-        val result = mercadoPagoUseCase.getIdentificationType().first()
-        identificationTypesResponse = result
-        Log.d("ClientPaymentsFormViewModel", "Data: ${identificationTypesResponse}")
-    }
 
     fun onCardNumberInput(input: String) {
         state = state.copy(cardNumber = input)
@@ -57,5 +46,4 @@ class ClientPaymentsFormViewModel @Inject constructor(private val mercadoPagoUse
     fun onIdentificationNumberInput(input: String) {
         state = state.copy(number = input)
     }
-
 }

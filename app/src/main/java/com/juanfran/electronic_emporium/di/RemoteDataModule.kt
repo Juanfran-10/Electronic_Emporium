@@ -31,10 +31,6 @@ object RemoteDataModule {
         AddressRemoteDataSourceImpl(addressService)
 
     @Provides
-    fun provideMercadoPagoRemoteDataSource(mercadoPagoService: MercadoPagoService): MercadoPagoRemoteDataSource =
-        MercadoPagoRemoteDataSourceImpl(mercadoPagoService)
-
-    @Provides
     fun provideOrdersRemoteDataSource(ordersService: OrdersService): OrdersRemoteDataSource =
         OrdersRemoteDataSourceImpl(ordersService)
 }

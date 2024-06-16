@@ -2,18 +2,14 @@ package com.juanfran.electronic_emporium.presentation.screens.client.payments.fo
 
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.juanfran.electronic_emporium.presentation.components.DefaultTopBar
 import com.juanfran.electronic_emporium.presentation.screens.client.payments.form.components.ClientPaymentsFormContent
-import com.juanfran.electronic_emporium.presentation.screens.client.payments.form.components.GetIdentificationTypes
 
 @Composable
-fun ClientPaymentsFormScreen(navController: NavHostController, vm: ClientPaymentsFormViewModel = hiltViewModel()) {
-
-    vm.getIdentificationTypes()
-//    vm.getInstallments(525413,100000.0 )
-
+fun ClientPaymentsFormScreen(
+    navController: NavHostController
+) {
     Scaffold(
         topBar = {
             DefaultTopBar(
@@ -23,7 +19,9 @@ fun ClientPaymentsFormScreen(navController: NavHostController, vm: ClientPayment
             )
         }
     ) { paddingValues ->
-        GetIdentificationTypes(paddingValues = paddingValues, navController = navController)
+        ClientPaymentsFormContent(
+            paddingValues = paddingValues,
+            navController = navController
+        )
     }
-    
 }

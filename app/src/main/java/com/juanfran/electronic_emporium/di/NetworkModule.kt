@@ -72,12 +72,6 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideMercadoPagoService(retrofit: Retrofit): MercadoPagoService {
-        return retrofit.create(MercadoPagoService::class.java)
-    }
-
-    @Provides
-    @Singleton
     fun provideOrdersService(retrofit: Retrofit): OrdersService {
         return retrofit.create(OrdersService::class.java)
     }

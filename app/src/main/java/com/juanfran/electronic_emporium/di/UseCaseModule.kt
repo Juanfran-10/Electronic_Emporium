@@ -6,7 +6,6 @@ import com.juanfran.electronic_emporium.domain.useCase.address.CreateAddressUseC
 import com.juanfran.electronic_emporium.domain.useCase.address.FindByUserAddressUseCase
 import com.juanfran.electronic_emporium.domain.useCase.auth.*
 import com.juanfran.electronic_emporium.domain.useCase.categories.*
-import com.juanfran.electronic_emporium.domain.useCase.mercado_pago.*
 import com.juanfran.electronic_emporium.domain.useCase.orders.FindAllOrdersUseCase
 import com.juanfran.electronic_emporium.domain.useCase.orders.FindByClientOrdersUseCase
 import com.juanfran.electronic_emporium.domain.useCase.orders.OrdersUseCase
@@ -75,15 +74,6 @@ object UseCaseModule {
         createAddress = CreateAddressUseCase(addressRepository),
         findByUserAddress = FindByUserAddressUseCase(addressRepository)
     )
-
-    @Provides
-    fun provideMercadoPagoUseCase(mercadoPagoRepository: MercadoPagoRepository) =
-        MercadoPagoUseCase(
-            getIdentificationType = GetIdentificationTypeUseCase(mercadoPagoRepository),
-            getInstallments = GetInstallmentsUseCase(mercadoPagoRepository),
-            createCardToken = CreateCardTokenUseCase(mercadoPagoRepository),
-            createPayment = CreatePaymentUseCase(mercadoPagoRepository),
-        )
 
     @Provides
     fun provideOrdersUseCase(ordersRepository: OrdersRepository) = OrdersUseCase(

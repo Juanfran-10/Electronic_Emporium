@@ -1,13 +1,10 @@
 package com.juanfran.electronic_emporium.presentation.screens.client.payments.form.components
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -17,15 +14,14 @@ import com.juanfran.electronic_emporium.presentation.components.DefaultButton
 import com.juanfran.electronic_emporium.presentation.components.DefaultTextField
 import com.juanfran.electronic_emporium.presentation.navigation.screen.client.ShoppingBagScreen
 import com.juanfran.electronic_emporium.presentation.screens.client.payments.form.ClientPaymentsFormViewModel
-import com.juanfran.electronic_emporium.presentation.screens.client.payments.form.mapper.toCardTokenBody
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ClientPaymentsFormContent(paddingValues: PaddingValues, navController: NavHostController, identificationTypes: List<String>, vm: ClientPaymentsFormViewModel = hiltViewModel()) {
-
+fun ClientPaymentsFormContent(
+    paddingValues: PaddingValues,
+    navController: NavHostController,
+    vm: ClientPaymentsFormViewModel = hiltViewModel()
+) {
     val state = vm.state
-    var selectedItem by remember { mutableStateOf(identificationTypes[0]) }
-    vm.onIdentificationTypeInput(selectedItem)
     var expanded by remember { mutableStateOf(false) }
 
     Column(
@@ -38,7 +34,7 @@ fun ClientPaymentsFormContent(paddingValues: PaddingValues, navController: NavHo
             modifier = Modifier.fillMaxWidth(),
             value = state.cardNumber,
             onValueChange = { vm.onCardNumberInput(it) },
-            label = "Numero de la tarjeta",
+            label = "Número de la tarjeta",
             icon = Icons.Default.Settings,
             keyboardType = KeyboardType.Number
         )
@@ -51,7 +47,7 @@ fun ClientPaymentsFormContent(paddingValues: PaddingValues, navController: NavHo
                 modifier = Modifier.weight(1f),
                 value = state.expirationYear,
                 onValueChange = { vm.onYearExpirationInput(it) },
-                label = "Año de expiracion YYYY",
+                label = "Año de expiración YYYY",
                 icon = Icons.Default.DateRange,
                 keyboardType = KeyboardType.Number,
                 fontSize = 12.sp
@@ -61,7 +57,7 @@ fun ClientPaymentsFormContent(paddingValues: PaddingValues, navController: NavHo
                 modifier = Modifier.weight(1f),
                 value = state.expirationMonth,
                 onValueChange = { vm.onMonthExpirationInput(it) },
-                label = "Mes de expiracion MM",
+                label = "Mes de expiración MM",
                 icon = Icons.Default.DateRange,
                 keyboardType = KeyboardType.Number,
                 fontSize = 12.sp
@@ -80,55 +76,15 @@ fun ClientPaymentsFormContent(paddingValues: PaddingValues, navController: NavHo
             modifier = Modifier.fillMaxWidth(),
             value = state.securityCode,
             onValueChange = { vm.onSecurityCodeInput(it) },
-            label = "Codigo de seguridad",
+            label = "Código de seguridad",
             icon = Icons.Default.Lock
         )
         Spacer(modifier = Modifier.height(10.dp))
-        ExposedDropdownMenuBox(
-            expanded = expanded,
-            onExpandedChange = {
-                expanded = !expanded
-            }
-        ) {
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = selectedItem,
-                onValueChange = {},
-                readOnly = true,
-                label = { Text(text = "Tipo de identificacion") },
-                trailingIcon = {
-                    ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded)
-                },
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor =Color.White
-                )
-
-            )
-
-            ExposedDropdownMenu(
-                modifier = Modifier.background(Color.White),
-                expanded = expanded,
-                onDismissRequest = { expanded = false }
-            ) {
-                identificationTypes.forEachIndexed { index, identification ->
-                    DropdownMenuItem(
-                        onClick = {
-                            selectedItem = identification
-                            vm.onIdentificationTypeInput(selectedItem)
-                            expanded = false
-                        }
-                    ) {
-                        Text(text = identification)
-                    }
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(5.dp))
         DefaultTextField(
             modifier = Modifier.fillMaxWidth(),
             value = state.number,
             onValueChange = { vm.onIdentificationNumberInput(it) },
-            label = "Numero de identificacion",
+            label = "Número de identificación",
             icon = Icons.Default.List,
             keyboardType = KeyboardType.Number
         )
@@ -137,12 +93,10 @@ fun ClientPaymentsFormContent(paddingValues: PaddingValues, navController: NavHo
             modifier = Modifier.fillMaxWidth(),
             text = "Continuar",
             onClick = {
-                navController.navigate(route = ShoppingBagScreen.PaymentsInstallments.passPaymentForm(state.toCardTokenBody().toJson())) {
-                    popUpTo(ShoppingBagScreen.PaymentsForm.route) { inclusive = true }
-                }
+                navController.navigate(
+                    route = ShoppingBagScreen.PaymentsStatus.route
+                )
             }
         )
-
     }
-    
 }
