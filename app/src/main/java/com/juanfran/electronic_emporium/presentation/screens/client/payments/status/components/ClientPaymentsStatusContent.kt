@@ -17,9 +17,11 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.juanfran.electronic_emporium.R
+import com.juanfran.electronic_emporium.domain.model.ShoppingBagProduct
 import com.juanfran.electronic_emporium.presentation.MainActivity
 import com.juanfran.electronic_emporium.presentation.components.DefaultButton
 import com.juanfran.electronic_emporium.presentation.screens.client.payments.status.ClientPaymentsStatusViewModel
+import com.juanfran.electronic_emporium.presentation.screens.client.shopping_bag.ClientShoppingBagViewModel
 
 @Composable
 fun ClientPaymentsStatusContent(
@@ -42,7 +44,7 @@ fun ClientPaymentsStatusContent(
         )
         Spacer(modifier = Modifier.height(20.dp))
         Text(
-            text = "Tu pedido fue procesada exitosamente /nUtilizando la tarjeta",
+            text = "Tu pedido fue procesado exitosamente utilizando la tarjeta",
             fontWeight = FontWeight.Bold,
             fontSize = 17.sp,
             textAlign = TextAlign.Center,

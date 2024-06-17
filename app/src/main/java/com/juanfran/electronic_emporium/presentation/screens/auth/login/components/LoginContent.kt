@@ -58,7 +58,7 @@ fun LoginContent(
     ) {
         Image(
             modifier = Modifier.fillMaxSize(),
-            painter = painterResource(id = R.drawable.banner),
+            painter = painterResource(id = R.drawable.banner_prueba),
             contentDescription = "Imagen de fondo",
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(
@@ -96,7 +96,7 @@ fun LoginContent(
                     topEnd = 40.dp,
                     topStart = 40.dp
                 ),
-                backgroundColor = Color.White.copy(alpha = 0.8f)
+                backgroundColor = Color.White.copy(alpha = 0.9f)
             ) {
                 Column(
                     modifier = Modifier

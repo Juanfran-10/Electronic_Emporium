@@ -54,7 +54,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
     ) {
         Image(
             modifier = Modifier.fillMaxSize(),
-            painter = painterResource(id = R.drawable.banner_form),
+            painter = painterResource(id = R.drawable.banner_prueba),
             contentDescription = "",
             contentScale = ContentScale.Crop,
             colorFilter = ColorFilter.colorMatrix(
@@ -98,7 +98,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     topStart = 40.dp,
                     topEnd = 40.dp
                 ),
-                backgroundColor = Color.White.copy(alpha = 0.8f)
+                backgroundColor = Color.White.copy(alpha = 0.9f)
             ) {
                 Column(
                     modifier = Modifier

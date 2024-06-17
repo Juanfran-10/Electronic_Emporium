@@ -8,8 +8,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.KeyboardArrowRight
+import androidx.compose.material.icons.outlined.List
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -132,7 +135,7 @@ fun AdminProductUpdateContent(
                     value = state.name,
                     onValueChange = { vm.onNameInput(it) },
                     label = "Nombre del producto",
-                    icon = Icons.Default.List
+                    icon = Icons.Default.Info
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 DefaultTextField(
@@ -140,7 +143,7 @@ fun AdminProductUpdateContent(
                     value = state.description,
                     onValueChange = { vm.onDescriptionInput(it) },
                     label = "Descripción",
-                    icon = Icons.Outlined.Info
+                    icon = Icons.Outlined.List
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 DefaultTextField(
@@ -148,7 +151,7 @@ fun AdminProductUpdateContent(
                     value = state.price.toString(),
                     onValueChange = { vm.onPriceInput(it) },
                     label = "Precio",
-                    icon = Icons.Outlined.Info,
+                    icon = Icons.Outlined.KeyboardArrowRight,
                     keyboardType = KeyboardType.Number
                 )
                 Spacer(modifier = Modifier.weight(1f))

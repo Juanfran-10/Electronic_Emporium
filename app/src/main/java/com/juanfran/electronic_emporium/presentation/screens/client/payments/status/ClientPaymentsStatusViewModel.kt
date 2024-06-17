@@ -2,6 +2,7 @@ package com.juanfran.electronic_emporium.presentation.screens.client.payments.st
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.juanfran.electronic_emporium.domain.useCase.shopping_bag.ShoppingBagUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

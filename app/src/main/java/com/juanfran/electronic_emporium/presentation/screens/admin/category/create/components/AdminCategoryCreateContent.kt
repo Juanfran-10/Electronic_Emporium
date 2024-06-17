@@ -7,8 +7,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.List
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -89,7 +92,7 @@ fun AdminCategoryCreateContent(
                     value = state.name,
                     onValueChange = { vm.onNameInput(it) },
                     label = "Nombre de la categoría",
-                    icon = Icons.Default.List
+                    icon = Icons.Default.Info
                 )
                 Spacer(modifier = Modifier.height(10.dp))
                 DefaultTextField(
@@ -97,7 +100,7 @@ fun AdminCategoryCreateContent(
                     value = state.description,
                     onValueChange = { vm.onDescriptionInput(it) },
                     label = "Descripción",
-                    icon = Icons.Outlined.Info
+                    icon = Icons.Outlined.List
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 DefaultButton(
